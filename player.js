@@ -948,6 +948,7 @@ async function loadPlaylistData() {
     }
   } catch (e) {}
 
+  renderFilterPills();
   renderSongList();
 
   const savedTrackId = localStorage.getItem("pmp_last_track");

@@ -41,6 +41,13 @@ function collectAudioFiles(dir) {
   return results.sort();
 }
 
+function folderToLabel(folderName) {
+  if (FOLDER_LABELS[folderName]) return FOLDER_LABELS[folderName];
+  return folderName
+    .replace(/[_\-]+/g, " ")
+    .replace(/\b\w/g, (c) => c.toUpperCase());
+}
+
 function main() {
   if (!fs.existsSync(MUSIC_DIR)) {
     console.error("[generate-playlist] Music directory not found: " + MUSIC_DIR);
@@ -78,7 +85,7 @@ function main() {
 
     playlists.push({
       folder: folderName,
-      label:  FOLDER_LABELS[folderName] || folderName,
+      label:  folderToLabel(folderName),
       tracks,
     });
   }
