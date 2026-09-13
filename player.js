@@ -374,13 +374,13 @@ function showToast(message) {
 // ── View Switching ───────────────────────────────────────────────────────────
 function setView(viewName) {
   state.activeView = viewName;
-  viewLibrary.classList.toggle("hidden", viewName !== "library");
-  viewNowPlaying.classList.toggle("hidden", viewName !== "nowplaying");
-  viewSettings.classList.toggle("hidden", viewName !== "settings");
+  if (viewLibrary) viewLibrary.classList.toggle("hidden", viewName !== "library");
+  if (viewNowPlaying) viewNowPlaying.classList.toggle("hidden", viewName !== "nowplaying");
+  if (viewSettings) viewSettings.classList.toggle("hidden", viewName !== "settings");
 
   document.body.classList.toggle("is-now-playing", viewName === "nowplaying");
-  if (miniPlayer) {
-    miniPlayer.style.display = viewName === "nowplaying" ? "none" : "flex";
+  if (bottomPlayer) {
+    bottomPlayer.style.display = viewName === "nowplaying" ? "none" : "flex";
   }
 
   window.scrollTo({ top: 0, behavior: "smooth" });
@@ -856,6 +856,7 @@ audio.addEventListener("timeupdate", () => {
     const pct = (cur / dur) * 100;
     if (seekSlider) seekSlider.value = pct;
     if (bpSeekSlider) bpSeekSlider.value = pct;
+    if (bottomPlayer) bottomPlayer.style.setProperty("--track-progress-pct", pct + "%");
     if (timeElapsed) timeElapsed.textContent = formatTime(cur);
     if (bpTimeElapsed) bpTimeElapsed.textContent = formatTime(cur);
     if (timeRemaining) timeRemaining.textContent = "-" + formatTime(Math.max(0, dur - cur));
@@ -863,6 +864,7 @@ audio.addEventListener("timeupdate", () => {
   } else {
     if (seekSlider) seekSlider.value = 0;
     if (bpSeekSlider) bpSeekSlider.value = 0;
+    if (bottomPlayer) bottomPlayer.style.setProperty("--track-progress-pct", "0%");
     if (timeElapsed) timeElapsed.textContent = "0:00";
     if (bpTimeElapsed) bpTimeElapsed.textContent = "0:00";
     if (timeRemaining) timeRemaining.textContent = "-0:00";
