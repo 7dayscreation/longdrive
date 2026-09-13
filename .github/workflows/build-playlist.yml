@@ -1,0 +1,41 @@
+﻿name: Build Playlist
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "music/**"
+      - "scripts/generate-playlist.js"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build-playlist:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Generate playlist.json
+        run: node scripts/generate-playlist.js
+
+      - name: Commit updated playlist.json
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add playlist.json
+          if git diff --cached --quiet; then
+            echo "No changes to playlist.json"
+          else
+            git commit -m "chore: update playlist.json [skip ci]"
+            git push
+          fi
