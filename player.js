@@ -309,6 +309,17 @@ function setView(viewName) {
   });
 }
 
+function formatFolderLabel(folder) {
+  if (!folder) return "Library";
+  if (folder.toLowerCase() === "devotional") return "Devotional";
+  if (folder.toLowerCase() === "my-music") return "My Music";
+  return folder
+    .replace(/[_\-]+/g, " ")
+    .replace(/\s+/g, " ")
+    .trim()
+    .replace(/\b\w/g, (c) => c.toUpperCase());
+}
+
 // ── Track Filtering & Rendering ──────────────────────────────────────────────
 function getFilteredTracks() {
   let list = state.tracks;
@@ -319,21 +330,91 @@ function getFilteredTracks() {
       t.title.toLowerCase().includes(q) ||
       (t.artist && t.artist.toLowerCase().includes(q)) ||
       (t.folder && t.folder.toLowerCase().includes(q)) ||
+      (t.album && t.album.toLowerCase().includes(q)) ||
       (t.filename && t.filename.toLowerCase().includes(q))
     );
   }
 
   if (state.activeFilter === "Liked Songs") {
     list = list.filter(t => state.likedSongIds.has(t.id));
-  } else if (state.activeFilter === "Devotional") {
-    list = list.filter(t => t.folder && t.folder.toLowerCase() === "devotional");
-  } else if (state.activeFilter === "My Music") {
-    list = list.filter(t => t.folder && t.folder.toLowerCase() === "my-music");
   } else if (state.activeFilter === "Recently Played") {
     list = state.recentSongIds.map(id => state.tracks.find(t => t.id === id)).filter(Boolean);
+  } else if (state.activeFilter !== "All") {
+    const target = state.activeFilter.toLowerCase();
+    list = list.filter(t => {
+      const fName = formatFolderLabel(t.folder).toLowerCase();
+      const rawFolder = (t.folder || "").toLowerCase();
+      const album = (t.album || "").toLowerCase();
+      const folderLabel = (t.folderLabel || "").toLowerCase();
+      return fName === target || rawFolder === target || album === target || folderLabel === target;
+    });
   }
 
   return list;
+}
+
+function renderFilterPills() {
+  if (!filterRow) return;
+  const folders = [...new Set(state.tracks.map(t => t.folderLabel || formatFolderLabel(t.folder)).filter(Boolean))];
+  const pills = ["All", ...folders, "Liked Songs", "Recently Played"];
+
+  filterRow.innerHTML = pills.map(p => `
+    <button class="filter-pill ${state.activeFilter === p ? "filter-active" : ""}" data-filter="${p}" role="tab">${p}</button>
+  `).join("");
+}
+
+function renderSidebarPlaylists() {
+  const nav = document.getElementById("sidebar-nav");
+  if (!nav) return;
+  const folders = [...new Set(state.tracks.map(t => t.folderLabel || formatFolderLabel(t.folder)).filter(Boolean))];
+
+  let html = `
+    <button class="nav-btn ${state.activeView === "library" && state.activeFilter === "All" ? "nav-active" : ""}" data-view="library" data-filter="All">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l11-2v13M9 18a3 3 0 1 1-3-3 3 3 0 0 1 3 3Zm11-2a3 3 0 1 1-3-3 3 3 0 0 1 3 3Z"/></svg>
+      <span>All Tracks</span>
+    </button>
+  `;
+
+  folders.forEach(f => {
+    const count = state.tracks.filter(t => (t.folderLabel || formatFolderLabel(t.folder)) === f).length;
+    const isActive = state.activeView === "library" && state.activeFilter === f;
+    html += `
+      <button class="nav-btn ${isActive ? "nav-active" : ""}" data-view="library" data-filter="${f}">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
+        <span>${f}</span>
+        <span style="margin-left: auto; font-size: 10px; color: var(--muted); background: #1b2018; padding: 2px 6px; border-radius: 8px;">${count}</span>
+      </button>
+    `;
+  });
+
+  html += `
+    <button class="nav-btn ${state.activeView === "library" && state.activeFilter === "Liked Songs" ? "nav-active" : ""}" data-view="library" data-filter="Liked Songs">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 8.7c0 5.5-8.8 10.3-8.8 10.3S3.2 14.2 3.2 8.7A4.7 4.7 0 0 1 12 6.1a4.7 4.7 0 0 1 8.8 2.6Z"/></svg>
+      <span>Liked Songs</span>
+    </button>
+
+    <button class="nav-btn ${state.activeView === "nowplaying" ? "nav-active" : ""}" data-view="nowplaying">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+      <span>Now Playing</span>
+    </button>
+  `;
+
+  nav.innerHTML = html;
+
+  nav.querySelectorAll("[data-view]").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const view = btn.getAttribute("data-view");
+      const filter = btn.getAttribute("data-filter");
+      if (filter) {
+        state.activeFilter = filter;
+        document.querySelectorAll(".filter-pill").forEach(p => {
+          p.classList.toggle("filter-active", p.getAttribute("data-filter") === filter);
+        });
+      }
+      setView(view);
+      if (view === "library") renderSongList();
+    });
+  });
 }
 
 function renderSongList() {
@@ -353,13 +434,11 @@ function renderSongList() {
     heading.textContent = '"' + state.searchQuery + '"';
     subtitle.textContent = "Found " + filtered.length + " matching track" + (filtered.length === 1 ? "" : "s");
   } else {
-    kicker.textContent = "COLLECTION / 2024";
+    kicker.textContent = state.activeFilter === "All" ? "COLLECTION / 2024" : "ALBUM PLAYLIST";
     heading.textContent = state.activeFilter;
     subtitle.textContent = state.activeFilter === "Liked Songs" 
       ? "Your heart-picked favorites in one place."
-      : state.activeFilter === "Devotional"
-      ? "Sacred sounds and contemplative tracks."
-      : "A quiet place for all your favorite sounds.";
+      : `${filtered.length} track${filtered.length === 1 ? "" : "s"} in this album`;
   }
 
   if (filtered.length === 0) {
@@ -435,7 +514,7 @@ function playTrack(id, shouldAutoplay = true) {
   try { localStorage.setItem("pmp_recents", JSON.stringify(state.recentSongIds)); } catch (e) {}
 
   if (track.path) {
-    audio.src = track.path;
+    audio.src = track.path.startsWith("blob:") ? track.path : encodeURI(track.path);
   } else {
     audio.removeAttribute("src");
     showToast('"' + track.title + '" is a demo track.');
@@ -874,7 +953,8 @@ fileInput.addEventListener("change", (e) => {
       title: title,
       artist: "Local Audio File",
       album: "Local Imports",
-      folder: "my-music",
+      folder: "Local Imports",
+      folderLabel: "Local Imports",
       duration: "—",
       color: COLOR_PALETTE[(state.tracks.length + i) % COLOR_PALETTE.length],
       genre: "Local",
@@ -883,6 +963,8 @@ fileInput.addEventListener("change", (e) => {
   });
 
   state.tracks = [...newTracks, ...state.tracks];
+  renderFilterPills();
+  renderSidebarPlaylists();
   renderSongList();
   showToast(newTracks.length + " song" + (newTracks.length > 1 ? "s" : "") + " added to your library!");
 
@@ -900,17 +982,19 @@ async function loadPlaylistData() {
     if (data && data.playlists && Array.isArray(data.playlists)) {
       data.playlists.forEach(pl => {
         if (pl.tracks && Array.isArray(pl.tracks)) {
+          const folderLabel = pl.label || formatFolderLabel(pl.folder);
           pl.tracks.forEach(tr => {
             fetchedTracks.push({
               id: "pl-" + tr.folder + "-" + tr.id,
               title: tr.title,
-              artist: tr.artist || (tr.folder === "devotional" ? "Devotional Music" : "Personal Collection"),
-              album: tr.album || (tr.folder ? tr.folder.replace("-", " ") : "LongDrive"),
+              artist: tr.artist || (tr.folder && tr.folder.toLowerCase() === "devotional" ? "Devotional Music" : folderLabel),
+              album: tr.album || folderLabel,
               folder: tr.folder,
+              folderLabel: folderLabel,
               filename: tr.filename,
               duration: tr.duration || "—",
               color: getTrackColor(tr.title),
-              genre: tr.folder === "devotional" ? "Spiritual" : "Lossless Audio",
+              genre: tr.folder && tr.folder.toLowerCase() === "devotional" ? "Spiritual" : "Lossless Audio",
               path: tr.path
             });
           });
@@ -949,6 +1033,7 @@ async function loadPlaylistData() {
   } catch (e) {}
 
   renderFilterPills();
+  renderSidebarPlaylists();
   renderSongList();
 
   const savedTrackId = localStorage.getItem("pmp_last_track");
@@ -981,6 +1066,11 @@ function setupEvents() {
     document.querySelectorAll(".filter-pill").forEach(p => p.classList.remove("filter-active"));
     pill.classList.add("filter-active");
     state.activeFilter = pill.getAttribute("data-filter");
+    
+    document.querySelectorAll("[data-filter]").forEach(btn => {
+      btn.classList.toggle("nav-active", btn.getAttribute("data-filter") === state.activeFilter);
+    });
+
     renderSongList();
   });
 

@@ -9,7 +9,7 @@ const path = require("path");
 
 const MUSIC_DIR   = path.resolve(__dirname, "..", "music");
 const OUTPUT_FILE = path.resolve(__dirname, "..", "playlist.json");
-const AUDIO_EXT   = new Set([".mp3", ".ogg", ".wav", ".flac", ".aac", ".m4a"]);
+const AUDIO_EXT   = new Set([".mp3", ".ogg", ".wav", ".flac", ".aac", ".m4a", ".webm", ".opus"]);
 
 const FOLDER_LABELS = {
   "my-music":   "My Music",
@@ -18,12 +18,27 @@ const FOLDER_LABELS = {
 
 function filenameToTitle(filename) {
   const noExt = path.parse(filename).name;
-  return noExt
+
+  // If filename is e.g. "01_Track" or "01 Track" or "01-Track"
+  const trackMatch = noExt.match(/^(\d+)[\s._-]+track$/i);
+  if (trackMatch) {
+    return `Track ${trackMatch[1]}`;
+  }
+
+  // If filename is e.g. "Track_01" or "Track 01"
+  const revMatch = noExt.match(/^track[\s._-]+(\d+)$/i);
+  if (revMatch) {
+    return `Track ${revMatch[1]}`;
+  }
+
+  const clean = noExt
     .replace(/^\d+[\s.\-_]+/, "")
     .replace(/[_\-]+/g, " ")
     .replace(/\s+/g, " ")
     .trim()
     .replace(/\b\w/g, (c) => c.toUpperCase());
+
+  return clean || noExt;
 }
 
 function collectAudioFiles(dir) {
@@ -38,13 +53,16 @@ function collectAudioFiles(dir) {
       results.push(fullPath);
     }
   }
-  return results.sort();
+  return results.sort((a, b) => a.localeCompare(b, undefined, { numeric: true, sensitivity: "base" }));
 }
 
 function folderToLabel(folderName) {
-  if (FOLDER_LABELS[folderName]) return FOLDER_LABELS[folderName];
+  const lower = folderName.toLowerCase();
+  if (FOLDER_LABELS[lower]) return FOLDER_LABELS[lower];
   return folderName
     .replace(/[_\-]+/g, " ")
+    .replace(/\s+/g, " ")
+    .trim()
     .replace(/\b\w/g, (c) => c.toUpperCase());
 }
 
