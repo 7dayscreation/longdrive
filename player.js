@@ -665,8 +665,12 @@ function renderSongList() {
 }
 
 // ── Playback Controls ────────────────────────────────────────────────────────
-async function playTrack(id, shouldAutoplay = true) {
+function playTrack(id, shouldAutoplay = true) {
   initAudioContext();
+  if (audioCtx && audioCtx.state === "suspended") {
+    audioCtx.resume();
+  }
+
   const track = state.tracks.find(t => t.id === id);
   if (!track) return;
 
@@ -676,8 +680,8 @@ async function playTrack(id, shouldAutoplay = true) {
   try { localStorage.setItem("pmp_recents", JSON.stringify(state.recentSongIds)); } catch (e) {}
 
   if (track.path) {
-    const playableUrl = await getPlayableAudioUrl(track);
-    audio.src = playableUrl;
+    const rawPath = track.path.startsWith("blob:") ? track.path : encodeURI(track.path);
+    audio.src = rawPath;
   } else {
     audio.removeAttribute("src");
     showToast('"' + track.title + '" is a demo track.');
@@ -706,14 +710,17 @@ async function playTrack(id, shouldAutoplay = true) {
   try { localStorage.setItem("pmp_last_track", String(id)); } catch (e) {}
 
   if (shouldAutoplay && track.path) {
-    audio.play().then(() => {
-      state.isPlaying = true;
-      updatePlayStateUI();
-    }).catch(err => {
-      console.warn("Autoplay blocked or stream error:", err);
-      state.isPlaying = false;
-      updatePlayStateUI();
-    });
+    const p = audio.play();
+    if (p !== undefined) {
+      p.then(() => {
+        state.isPlaying = true;
+        updatePlayStateUI();
+      }).catch(err => {
+        console.warn("Autoplay blocked or stream error:", err);
+        state.isPlaying = false;
+        updatePlayStateUI();
+      });
+    }
   } else {
     state.isPlaying = false;
     updatePlayStateUI();
@@ -722,12 +729,17 @@ async function playTrack(id, shouldAutoplay = true) {
   updateMediaSession(track);
   renderSongList();
 
-  // Spotify-style Lookahead Preload: Prefetches current and upcoming tracks into phone cache
-  preloadUpcomingTracks(id);
+  // Background lookahead caching without blocking playback
+  setTimeout(() => {
+    preloadUpcomingTracks(id);
+  }, 100);
 }
 
 function togglePlayPause() {
   initAudioContext();
+  if (audioCtx && audioCtx.state === "suspended") {
+    audioCtx.resume();
+  }
 
   if (!state.currentTrackId && state.tracks.length > 0) {
     playTrack(state.tracks[0].id);
@@ -741,10 +753,17 @@ function togglePlayPause() {
   }
 
   if (audio.paused) {
-    audio.play().then(() => {
-      state.isPlaying = true;
-      updatePlayStateUI();
-    }).catch(e => console.warn(e));
+    const p = audio.play();
+    if (p !== undefined) {
+      p.then(() => {
+        state.isPlaying = true;
+        updatePlayStateUI();
+      }).catch(e => {
+        console.warn("Playback error:", e);
+        state.isPlaying = false;
+        updatePlayStateUI();
+      });
+    }
   } else {
     audio.pause();
     state.isPlaying = false;
