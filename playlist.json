@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-13T09:24:28.787Z",
+  "generated": "2026-09-13T09:36:44.941Z",
   "playlists": [
     {
       "folder": "Jivan ni Pagdhare",
@@ -142,6 +142,13 @@
           "filename": "Lunawada Song.mp3",
           "title": "Lunawada Song",
           "path": "music/devotional/Lunawada Song.mp3"
+        },
+        {
+          "id": 18,
+          "folder": "devotional",
+          "filename": "Tahuko Hemant Chauhan.mp3",
+          "title": "Tahuko Hemant Chauhan",
+          "path": "music/devotional/Tahuko Hemant Chauhan.mp3"
         }
       ]
     }
