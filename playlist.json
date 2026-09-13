@@ -1,4 +1,18 @@
 {
-  "generated": "2026-09-13T06:29:11.115Z",
-  "playlists": []
+  "generated": "2026-09-13T06:33:46.575Z",
+  "playlists": [
+    {
+      "folder": "devotional",
+      "label": "Devotional",
+      "tracks": [
+        {
+          "id": 0,
+          "folder": "devotional",
+          "filename": "Lunawada Song.mp3",
+          "title": "Lunawada Song",
+          "path": "music/devotional/Lunawada Song.mp3"
+        }
+      ]
+    }
+  ]
 }
