@@ -41,7 +41,7 @@ html, body {
   font-family: var(--font-main);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  overflow-x: hidden;
+  overflow-x: clip;
   user-select: none;
 }
 
@@ -125,16 +125,16 @@ button:focus-visible, input:focus-visible, select:focus-visible {
   position: fixed;
   top: 0;
   left: 0;
-  bottom: 88px;
-  height: calc(100vh - 88px);
+  bottom: 0;
+  height: 100vh;
   border-right: 1px solid var(--line);
   background: rgba(14, 16, 13, 0.96);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  padding: 24px 18px 16px;
+  padding: 24px 18px 20px;
   display: flex;
   flex-direction: column;
-  z-index: 30;
+  z-index: 50;
   overflow-y: auto;
   overflow-x: hidden;
 }
@@ -310,13 +310,14 @@ button:focus-visible, input:focus-visible, select:focus-visible {
   display: flex;
   align-items: center;
   gap: 20px;
-  padding: 22px 5vw;
+  padding: 18px 5vw;
   position: sticky;
   top: 0;
-  background: rgba(11, 12, 11, 0.85);
-  backdrop-filter: blur(16px);
-  z-index: 15;
-  border-bottom: 1px solid rgba(37, 40, 35, 0.4);
+  background: rgba(11, 12, 11, 0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  z-index: 40;
+  border-bottom: 1px solid var(--line);
 }
 
 .mobile-brand {
@@ -1164,24 +1165,24 @@ button:focus-visible, input:focus-visible, select:focus-visible {
 }
 
 /* ════════════════════════════════════════════
-   FULL-WIDTH FOOTER WEB PLAYER (Desktop & Mobile)
+   FOOTER WEB PLAYER (Desktop starts at sidebar)
    ════════════════════════════════════════════ */
 .bottom-player {
   position: fixed;
   bottom: 0;
-  left: 0;
+  left: 250px;
   right: 0;
-  width: 100vw;
+  width: calc(100% - 250px);
   height: 88px;
   background: rgba(14, 17, 13, 0.96);
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
-  border-top: 1px solid #22281d;
+  border-top: 1px solid var(--line);
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0 28px;
-  z-index: 100;
+  z-index: 45;
   box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.7);
 }
 
