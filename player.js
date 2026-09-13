@@ -308,16 +308,30 @@ const volumeSlider = document.getElementById("volume-slider");
 const speedSelect = document.getElementById("speed-select");
 const dynamicBackdrop = document.getElementById("dynamic-backdrop");
 
-// Mini Player
-const miniPlayer = document.getElementById("mini-player");
-const miniArt = document.getElementById("mini-art");
-const miniMonogram = document.getElementById("mini-monogram");
-const miniTitle = document.getElementById("mini-title");
-const miniArtist = document.getElementById("mini-artist");
-const miniProgressBar = document.getElementById("mini-progress-bar");
-const miniPlayBtn = document.getElementById("mini-play-btn");
-const miniPlayIcon = document.getElementById("mini-play-icon");
-const miniNextBtn = document.getElementById("mini-next-btn");
+// Full-width Footer Web Player elements
+const bottomPlayer = document.getElementById("bottom-player");
+const bpArt = document.getElementById("bp-art");
+const bpMonogram = document.getElementById("bp-monogram");
+const bpTitle = document.getElementById("bp-title");
+const bpArtist = document.getElementById("bp-artist");
+const btnBpLike = document.getElementById("btn-bp-like");
+const btnBpShuffle = document.getElementById("btn-bp-shuffle");
+const btnBpPrev = document.getElementById("btn-bp-prev");
+const btnBpPlay = document.getElementById("btn-bp-play");
+const bpPlayIcon = document.getElementById("bp-play-icon");
+const btnBpNext = document.getElementById("btn-bp-next");
+const btnBpRepeat = document.getElementById("btn-bp-repeat");
+const bpRepeatBadge = document.getElementById("bp-repeat-badge");
+const bpSeekSlider = document.getElementById("bp-seek-slider");
+const bpTimeElapsed = document.getElementById("bp-time-elapsed");
+const bpTimeRemaining = document.getElementById("bp-time-remaining");
+const btnBpEq = document.getElementById("btn-bp-eq");
+const btnBpTimer = document.getElementById("btn-bp-timer");
+const btnBpMute = document.getElementById("btn-bp-mute");
+const bpVolumeIcon = document.getElementById("bp-volume-icon");
+const bpVolumeSlider = document.getElementById("bp-volume-slider");
+const btnBpExpand = document.getElementById("btn-bp-expand");
+const bpInfoClick = document.getElementById("bp-info-click");
 
 // Modals & Toast
 const modalEq = document.getElementById("modal-eq");
@@ -588,9 +602,6 @@ function renderSongList() {
 // ── Playback Controls ────────────────────────────────────────────────────────
 function playTrack(id, shouldAutoplay = true) {
   initAudioContext();
-  if (audioCtx && audioCtx.state === "suspended") {
-    audioCtx.resume();
-  }
 
   const track = state.tracks.find(t => t.id === id);
   if (!track) return;
@@ -621,10 +632,10 @@ function playTrack(id, shouldAutoplay = true) {
   if (npMonogram) npMonogram.textContent = initials;
   if (dynamicBackdrop) dynamicBackdrop.style.setProperty("--track-glow", color + "20");
 
-  if (miniTitle) miniTitle.textContent = track.title;
-  if (miniArtist) miniArtist.textContent = track.artist || "LongDrive Library";
-  if (miniArt) miniArt.style.setProperty("--art", color);
-  if (miniMonogram) miniMonogram.textContent = initials;
+  if (bpTitle) bpTitle.textContent = track.title;
+  if (bpArtist) bpArtist.textContent = track.artist || "LongDrive Library";
+  if (bpArt) bpArt.style.setProperty("--art", color);
+  if (bpMonogram) bpMonogram.textContent = initials;
 
   updateLikeButtons();
 
@@ -637,7 +648,7 @@ function playTrack(id, shouldAutoplay = true) {
         state.isPlaying = true;
         updatePlayStateUI();
       }).catch(err => {
-        console.warn("Autoplay blocked or stream error:", err);
+        console.warn("Autoplay notice:", err);
         state.isPlaying = false;
         updatePlayStateUI();
       });
@@ -658,9 +669,6 @@ function playTrack(id, shouldAutoplay = true) {
 
 function togglePlayPause() {
   initAudioContext();
-  if (audioCtx && audioCtx.state === "suspended") {
-    audioCtx.resume();
-  }
 
   if (!state.currentTrackId && state.tracks.length > 0) {
     playTrack(state.tracks[0].id);
@@ -743,25 +751,25 @@ function playPrevTrack() {
 
 function toggleShuffle() {
   state.isShuffle = !state.isShuffle;
-  btnShuffle.classList.toggle("control-active", state.isShuffle);
+  if (btnShuffle) btnShuffle.classList.toggle("control-active", state.isShuffle);
+  if (btnBpShuffle) btnBpShuffle.classList.toggle("control-active", state.isShuffle);
   showToast(state.isShuffle ? "Shuffle Mode On" : "Shuffle Mode Off");
 }
 
 function toggleRepeat() {
   state.repeatMode = (state.repeatMode + 1) % 3;
-  if (state.repeatMode === 0) {
-    btnRepeat.classList.remove("control-active");
-    repeatBadge.style.display = "none";
-    showToast("Repeat Off");
-  } else if (state.repeatMode === 1) {
-    btnRepeat.classList.add("control-active");
-    repeatBadge.style.display = "none";
-    showToast("Repeat All Tracks");
-  } else if (state.repeatMode === 2) {
-    btnRepeat.classList.add("control-active");
-    repeatBadge.style.display = "grid";
-    showToast("Repeat Current Track");
-  }
+  const isAll = state.repeatMode === 1;
+  const isOne = state.repeatMode === 2;
+
+  if (btnRepeat) btnRepeat.classList.toggle("control-active", isAll || isOne);
+  if (repeatBadge) repeatBadge.style.display = isOne ? "grid" : "none";
+
+  if (btnBpRepeat) btnBpRepeat.classList.toggle("control-active", isAll || isOne);
+  if (bpRepeatBadge) bpRepeatBadge.style.display = isOne ? "grid" : "none";
+
+  if (state.repeatMode === 0) showToast("Repeat Off");
+  else if (state.repeatMode === 1) showToast("Repeat All Tracks");
+  else if (state.repeatMode === 2) showToast("Repeat Current Track");
 }
 
 function toggleLike(id) {
@@ -782,7 +790,8 @@ function toggleLike(id) {
 
 function updateLikeButtons() {
   const isLiked = state.likedSongIds.has(state.currentTrackId);
-  btnNpLike.classList.toggle("liked", isLiked);
+  if (btnNpLike) btnNpLike.classList.toggle("liked", isLiked);
+  if (btnBpLike) btnBpLike.classList.toggle("liked", isLiked);
 
   document.querySelectorAll(".song-row").forEach(row => {
     const id = row.getAttribute("data-id");
@@ -794,14 +803,19 @@ function updateLikeButtons() {
 }
 
 function updatePlayStateUI() {
+  const playSvg = '<polygon points="8 5 19 12 8 19 8 5" fill="currentColor"/>';
+  const pauseSvg = '<rect x="6" y="4" width="4" height="16" fill="currentColor"/><rect x="14" y="4" width="4" height="16" fill="currentColor"/>';
+  const bpPlaySvg = '<polygon points="7 4 19 12 7 20 7 4" fill="currentColor"/>';
+  const bpPauseSvg = '<rect x="5" y="4" width="4" height="16" fill="currentColor"/><rect x="15" y="4" width="4" height="16" fill="currentColor"/>';
+
   if (state.isPlaying) {
-    mainPlayIcon.innerHTML = '<rect x="6" y="4" width="4" height="16" fill="currentColor"/><rect x="14" y="4" width="4" height="16" fill="currentColor"/>';
-    miniPlayIcon.innerHTML = '<rect x="6" y="4" width="4" height="16" fill="currentColor"/><rect x="14" y="4" width="4" height="16" fill="currentColor"/>';
-    npArtwork.classList.add("is-spinning");
+    if (mainPlayIcon) mainPlayIcon.innerHTML = pauseSvg;
+    if (bpPlayIcon) bpPlayIcon.innerHTML = bpPauseSvg;
+    if (npArtwork) npArtwork.classList.add("is-spinning");
   } else {
-    mainPlayIcon.innerHTML = '<polygon points="8 5 19 12 8 19 8 5" fill="currentColor"/>';
-    miniPlayIcon.innerHTML = '<polygon points="8 5 19 12 8 19 8 5" fill="currentColor"/>';
-    npArtwork.classList.remove("is-spinning");
+    if (mainPlayIcon) mainPlayIcon.innerHTML = playSvg;
+    if (bpPlayIcon) bpPlayIcon.innerHTML = bpPlaySvg;
+    if (npArtwork) npArtwork.classList.remove("is-spinning");
   }
 
   document.querySelectorAll(".song-row").forEach(row => {
@@ -812,9 +826,7 @@ function updatePlayStateUI() {
 
     const playBtnSvg = row.querySelector(".row-play svg");
     if (playBtnSvg) {
-      playBtnSvg.innerHTML = (isCurrent && state.isPlaying)
-        ? '<rect x="6" y="4" width="4" height="16" fill="currentColor"/><rect x="14" y="4" width="4" height="16" fill="currentColor"/>'
-        : '<polygon points="8 5 19 12 8 19 8 5" fill="currentColor"/>';
+      playBtnSvg.innerHTML = (isCurrent && state.isPlaying) ? pauseSvg : playSvg;
     }
   });
 }
@@ -842,15 +854,19 @@ audio.addEventListener("timeupdate", () => {
 
   if (dur > 0) {
     const pct = (cur / dur) * 100;
-    seekSlider.value = pct;
-    miniProgressBar.style.width = pct + "%";
-    timeElapsed.textContent = formatTime(cur);
-    timeRemaining.textContent = "-" + formatTime(Math.max(0, dur - cur));
+    if (seekSlider) seekSlider.value = pct;
+    if (bpSeekSlider) bpSeekSlider.value = pct;
+    if (timeElapsed) timeElapsed.textContent = formatTime(cur);
+    if (bpTimeElapsed) bpTimeElapsed.textContent = formatTime(cur);
+    if (timeRemaining) timeRemaining.textContent = "-" + formatTime(Math.max(0, dur - cur));
+    if (bpTimeRemaining) bpTimeRemaining.textContent = "-" + formatTime(Math.max(0, dur - cur));
   } else {
-    seekSlider.value = 0;
-    miniProgressBar.style.width = "0%";
-    timeElapsed.textContent = "0:00";
-    timeRemaining.textContent = "-0:00";
+    if (seekSlider) seekSlider.value = 0;
+    if (bpSeekSlider) bpSeekSlider.value = 0;
+    if (timeElapsed) timeElapsed.textContent = "0:00";
+    if (bpTimeElapsed) bpTimeElapsed.textContent = "0:00";
+    if (timeRemaining) timeRemaining.textContent = "-0:00";
+    if (bpTimeRemaining) bpTimeRemaining.textContent = "-0:00";
   }
 
   if (state.sleepTimerEndsAt && Date.now() >= state.sleepTimerEndsAt) {
@@ -899,8 +915,9 @@ volumeSlider.addEventListener("input", (e) => {
   state.volume = Number(e.target.value) / 100;
   audio.volume = state.volume;
   state.isMuted = state.volume === 0;
+  if (bpVolumeSlider) bpVolumeSlider.value = state.volume * 100;
   updateVolumeIcon();
-  try { localStorage.setItem("pmp_volume", String(state.volume)); } catch (e) {}
+  try { localStorage.setItem("pmp_volume", String(state.volume)); } catch (err) {}
 });
 
 btnMute.addEventListener("click", () => {
@@ -908,21 +925,29 @@ btnMute.addEventListener("click", () => {
   if (state.isMuted) {
     audio.volume = 0;
     volumeSlider.value = 0;
+    if (bpVolumeSlider) bpVolumeSlider.value = 0;
   } else {
     audio.volume = state.volume || 0.8;
     volumeSlider.value = (state.volume || 0.8) * 100;
+    if (bpVolumeSlider) bpVolumeSlider.value = (state.volume || 0.8) * 100;
   }
   updateVolumeIcon();
 });
 
 function updateVolumeIcon() {
+  const muteSvg = '<polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/>';
+  const lowSvg = '<polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/>';
+  const highSvg = '<polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/>';
+
+  let iconSvg = highSvg;
   if (state.isMuted || audio.volume === 0) {
-    volumeIcon.innerHTML = '<polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/>';
+    iconSvg = muteSvg;
   } else if (audio.volume < 0.5) {
-    volumeIcon.innerHTML = '<polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/>';
-  } else {
-    volumeIcon.innerHTML = '<polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/>';
+    iconSvg = lowSvg;
   }
+
+  if (volumeIcon) volumeIcon.innerHTML = iconSvg;
+  if (bpVolumeIcon) bpVolumeIcon.innerHTML = iconSvg;
 }
 
 speedSelect.addEventListener("change", (e) => {
@@ -1145,7 +1170,8 @@ async function loadPlaylistData() {
     if (savedVol) {
       state.volume = parseFloat(savedVol);
       audio.volume = state.volume;
-      volumeSlider.value = state.volume * 100;
+      if (volumeSlider) volumeSlider.value = state.volume * 100;
+      if (bpVolumeSlider) bpVolumeSlider.value = state.volume * 100;
     }
 
     const savedEq = localStorage.getItem("pmp_eq");
@@ -1202,26 +1228,70 @@ function setupEvents() {
     renderSongList();
   });
 
-  btnMainPlay.addEventListener("click", togglePlayPause);
-  miniPlayBtn.addEventListener("click", (e) => {
-    e.stopPropagation();
-    togglePlayPause();
-  });
-  btnNext.addEventListener("click", playNextTrack);
-  miniNextBtn.addEventListener("click", (e) => {
-    e.stopPropagation();
-    playNextTrack();
-  });
-  btnPrev.addEventListener("click", playPrevTrack);
-  btnShuffle.addEventListener("click", toggleShuffle);
-  btnRepeat.addEventListener("click", toggleRepeat);
-  btnNpLike.addEventListener("click", () => {
-    if (state.currentTrackId) toggleLike(state.currentTrackId);
-  });
+  // Play / Pause Buttons
+  if (btnMainPlay) btnMainPlay.addEventListener("click", togglePlayPause);
+  if (btnBpPlay) btnBpPlay.addEventListener("click", togglePlayPause);
 
-  miniPlayer.addEventListener("click", () => {
-    setView("nowplaying");
-  });
+  // Next / Prev Buttons
+  if (btnNext) btnNext.addEventListener("click", playNextTrack);
+  if (btnBpNext) btnBpNext.addEventListener("click", playNextTrack);
+  if (btnPrev) btnPrev.addEventListener("click", playPrevTrack);
+  if (btnBpPrev) btnBpPrev.addEventListener("click", playPrevTrack);
+
+  // Shuffle & Repeat
+  if (btnShuffle) btnShuffle.addEventListener("click", toggleShuffle);
+  if (btnBpShuffle) btnBpShuffle.addEventListener("click", toggleShuffle);
+  if (btnRepeat) btnRepeat.addEventListener("click", toggleRepeat);
+  if (btnBpRepeat) btnBpRepeat.addEventListener("click", toggleRepeat);
+
+  // Like Buttons
+  if (btnNpLike) {
+    btnNpLike.addEventListener("click", () => {
+      if (state.currentTrackId) toggleLike(state.currentTrackId);
+    });
+  }
+  if (btnBpLike) {
+    btnBpLike.addEventListener("click", () => {
+      if (state.currentTrackId) toggleLike(state.currentTrackId);
+    });
+  }
+
+  // Footer Seek & Volume Sliders
+  if (bpSeekSlider) {
+    bpSeekSlider.addEventListener("input", (e) => {
+      const dur = audio.duration || 0;
+      if (dur > 0) {
+        const target = (Number(e.target.value) / 100) * dur;
+        audio.currentTime = target;
+      }
+    });
+  }
+
+  if (bpVolumeSlider) {
+    bpVolumeSlider.addEventListener("input", (e) => {
+      state.volume = Number(e.target.value) / 100;
+      audio.volume = state.volume;
+      state.isMuted = state.volume === 0;
+      if (volumeSlider) volumeSlider.value = state.volume * 100;
+      updateVolumeIcon();
+      try { localStorage.setItem("pmp_volume", String(state.volume)); } catch (err) {}
+    });
+  }
+
+  if (btnBpMute) {
+    btnBpMute.addEventListener("click", () => {
+      btnMute.click();
+    });
+  }
+
+  if (btnBpEq) btnBpEq.addEventListener("click", () => openModal(modalEq));
+  if (btnBpTimer) btnBpTimer.addEventListener("click", () => openModal(modalTimer));
+
+  // Expand to Now Playing view
+  const openNowPlaying = () => setView("nowplaying");
+  if (btnBpExpand) btnBpExpand.addEventListener("click", openNowPlaying);
+  if (bpArt) bpArt.addEventListener("click", openNowPlaying);
+  if (bpInfoClick) bpInfoClick.addEventListener("click", openNowPlaying);
 
   document.getElementById("btn-np-back").addEventListener("click", () => {
     setView("library");
@@ -1256,7 +1326,8 @@ function setupEvents() {
 
   document.getElementById("btn-shuffle-all").addEventListener("click", () => {
     state.isShuffle = true;
-    btnShuffle.classList.add("control-active");
+    if (btnShuffle) btnShuffle.classList.add("control-active");
+    if (btnBpShuffle) btnBpShuffle.classList.add("control-active");
     playNextTrack();
     showToast("Shuffling all library tracks!");
   });
@@ -1334,11 +1405,13 @@ function setupEvents() {
       state.volume = Math.min(1, state.volume + 0.05);
       audio.volume = state.volume;
       volumeSlider.value = state.volume * 100;
+      if (bpVolumeSlider) bpVolumeSlider.value = state.volume * 100;
       updateVolumeIcon();
     } else if (e.key === "ArrowDown") {
       state.volume = Math.max(0, state.volume - 0.05);
       audio.volume = state.volume;
       volumeSlider.value = state.volume * 100;
+      if (bpVolumeSlider) bpVolumeSlider.value = state.volume * 100;
       updateVolumeIcon();
     }
   });
