@@ -92,51 +92,8 @@ const state = {
   sleepTimerEndOfTrack: false
 };
 
-// ── Audio Context & Hardware Filters (Web Audio API) ─────────────────────────
-let audioCtx = null;
-let audioSourceNode = null;
-let lowShelfFilter = null;
-let midFilter = null;
-let highShelfFilter = null;
-
 function initAudioContext() {
-  if (audioCtx) return;
-  try {
-    const AudioContextClass = window.AudioContext || window.webkitAudioContext;
-    if (!AudioContextClass) return;
-    audioCtx = new AudioContextClass();
-
-    audioSourceNode = audioCtx.createMediaElementSource(audio);
-
-    // Bass Filter (Low shelf)
-    lowShelfFilter = audioCtx.createBiquadFilter();
-    lowShelfFilter.type = "lowshelf";
-    lowShelfFilter.frequency.value = 120;
-    lowShelfFilter.gain.value = 0;
-
-    // Mid Filter (Peaking)
-    midFilter = audioCtx.createBiquadFilter();
-    midFilter.type = "peaking";
-    midFilter.frequency.value = 1500;
-    midFilter.Q.value = 1.0;
-    midFilter.gain.value = 0;
-
-    // Treble Filter (High shelf)
-    highShelfFilter = audioCtx.createBiquadFilter();
-    highShelfFilter.type = "highshelf";
-    highShelfFilter.frequency.value = 7500;
-    highShelfFilter.gain.value = 0;
-
-    // Chain: Source -> Low -> Mid -> High -> Destination
-    audioSourceNode.connect(lowShelfFilter);
-    lowShelfFilter.connect(midFilter);
-    midFilter.connect(highShelfFilter);
-    highShelfFilter.connect(audioCtx.destination);
-
-    applyEqPreset(state.eqPreset);
-  } catch (err) {
-    console.warn("Web Audio API not supported or already attached:", err);
-  }
+  // Direct hardware accelerated HTML5 audio playback (zero CORS or silence bugs)
 }
 
 function applyEqPreset(preset) {
@@ -159,42 +116,6 @@ function applyEqPreset(preset) {
   document.querySelectorAll(".preset-btn[data-preset]").forEach(btn => {
     btn.classList.toggle("active", btn.getAttribute("data-preset") === preset);
   });
-
-  if (!lowShelfFilter) return;
-
-  if (audioCtx && audioCtx.state === "suspended") {
-    audioCtx.resume();
-  }
-
-  const now = audioCtx.currentTime;
-  switch (preset) {
-    case "BassBoost":
-      lowShelfFilter.gain.setValueAtTime(7.5, now);
-      midFilter.gain.setValueAtTime(-1, now);
-      highShelfFilter.gain.setValueAtTime(1, now);
-      break;
-    case "Vocal":
-      lowShelfFilter.gain.setValueAtTime(-2, now);
-      midFilter.gain.setValueAtTime(5, now);
-      highShelfFilter.gain.setValueAtTime(2, now);
-      break;
-    case "Acoustic":
-      lowShelfFilter.gain.setValueAtTime(3, now);
-      midFilter.gain.setValueAtTime(2, now);
-      highShelfFilter.gain.setValueAtTime(4.5, now);
-      break;
-    case "Treble":
-      lowShelfFilter.gain.setValueAtTime(-1, now);
-      midFilter.gain.setValueAtTime(1, now);
-      highShelfFilter.gain.setValueAtTime(7, now);
-      break;
-    case "Flat":
-    default:
-      lowShelfFilter.gain.setValueAtTime(0, now);
-      midFilter.gain.setValueAtTime(0, now);
-      highShelfFilter.gain.setValueAtTime(0, now);
-      break;
-  }
 }
 
 // ── Offline Drive & Preload Engine (Spotify-style Lookahead Cache) ───────────
@@ -898,7 +819,23 @@ function updatePlayStateUI() {
   });
 }
 
-// ── Audio Events (Seek, Time, Ended) ─────────────────────────────────────────
+// ── Audio Events (Play, Pause, Seek, Time, Ended, Error) ─────────────────────
+audio.addEventListener("play", () => {
+  state.isPlaying = true;
+  updatePlayStateUI();
+});
+
+audio.addEventListener("pause", () => {
+  state.isPlaying = false;
+  updatePlayStateUI();
+});
+
+audio.addEventListener("error", (e) => {
+  console.warn("Audio playback stream notice:", audio.error, e);
+  state.isPlaying = false;
+  updatePlayStateUI();
+});
+
 audio.addEventListener("timeupdate", () => {
   const cur = audio.currentTime || 0;
   const dur = audio.duration || 0;
