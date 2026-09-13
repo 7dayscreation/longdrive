@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <!-- Background Gradient -->
+    <radialGradient id="bgGrad" cx="50%" cy="30%" r="75%">
+      <stop offset="0%" stop-color="#182014"/>
+      <stop offset="60%" stop-color="#0c0e0b"/>
+      <stop offset="100%" stop-color="#060705"/>
+    </radialGradient>
+
+    <!-- Accent Lime Glow -->
+    <radialGradient id="limeGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#c6e94c" stop-opacity="0.35"/>
+      <stop offset="60%" stop-color="#c6e94c" stop-opacity="0.08"/>
+      <stop offset="100%" stop-color="#c6e94c" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Metallic Lime Gradient for MV -->
+    <linearGradient id="mvGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ebff99"/>
+      <stop offset="35%" stop-color="#c6e94c"/>
+      <stop offset="85%" stop-color="#8fa733"/>
+      <stop offset="100%" stop-color="#55661d"/>
+    </linearGradient>
+
+    <!-- Disc Gradient -->
+    <linearGradient id="discGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#232a1f"/>
+      <stop offset="100%" stop-color="#11150f"/>
+    </linearGradient>
+
+    <!-- Gold-Lime Ring Gradient -->
+    <linearGradient id="ringGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#c6e94c" stop-opacity="0.8"/>
+      <stop offset="50%" stop-color="#ffffff" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#c6e94c" stop-opacity="0.8"/>
+    </linearGradient>
+
+    <!-- Drop Shadow Filter -->
+    <filter id="neonDrop" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="8" stdDeviation="16" flood-color="#c6e94c" flood-opacity="0.45"/>
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#000000" flood-opacity="0.8"/>
+    </filter>
+  </defs>
+
+  <!-- Squircle Base for App Icon -->
+  <rect width="512" height="512" rx="116" fill="url(#bgGrad)"/>
+  <rect width="504" height="504" x="4" y="4" rx="112" fill="none" stroke="url(#ringGrad)" stroke-width="3" stroke-opacity="0.35"/>
+
+  <!-- Halo Aura -->
+  <circle cx="256" cy="256" r="210" fill="url(#limeGlow)"/>
+
+  <!-- Vinyl Turntable Base -->
+  <circle cx="256" cy="256" r="190" fill="url(#discGrad)" stroke="#2d3527" stroke-width="4"/>
+  <circle cx="256" cy="256" r="165" fill="none" stroke="#252b20" stroke-width="2"/>
+  <circle cx="256" cy="256" r="140" fill="none" stroke="#2a3224" stroke-width="1.5" stroke-dasharray="8 4"/>
+  <circle cx="256" cy="256" r="115" fill="none" stroke="#23291e" stroke-width="2"/>
+
+  <!-- Center Core Disc -->
+  <circle cx="256" cy="256" r="95" fill="#0d100c" stroke="#3b4632" stroke-width="3"/>
+  <circle cx="256" cy="256" r="95" fill="none" stroke="#c6e94c" stroke-width="2" stroke-opacity="0.5"/>
+
+  <!-- Stylish Sound Wave Arc Accent -->
+  <path d="M 120 256 A 136 136 0 0 1 392 256" fill="none" stroke="#c6e94c" stroke-width="5" stroke-linecap="round" stroke-dasharray="14 12" stroke-opacity="0.75"/>
+  <path d="M 145 256 A 111 111 0 0 0 367 256" fill="none" stroke="#c6e94c" stroke-width="3.5" stroke-linecap="round" stroke-dasharray="10 10" stroke-opacity="0.4"/>
+
+  <!-- 'MV' Interlocking Monogram Geometry with Shadow -->
+  <g filter="url(#neonDrop)">
+    <!-- Letter M -->
+    <path d="M 148 335 L 148 180 L 182 180 L 222 268 L 262 180 L 296 180 L 296 335 L 264 335 L 264 228 L 234 295 L 210 295 L 180 228 L 180 335 Z" fill="url(#mvGrad)"/>
+    
+    <!-- Letter V seamlessly interlocking across M -->
+    <path d="M 282 180 L 316 180 L 364 300 L 412 180 L 446 180 L 382 335 L 346 335 Z" fill="url(#mvGrad)"/>
+  </g>
+
+  <!-- Center Turntable Spindle Glow -->
+  <circle cx="256" cy="256" r="10" fill="#c6e94c" opacity="0.95"/>
+  <circle cx="256" cy="256" r="5" fill="#0b0c0b"/>
+</svg>
