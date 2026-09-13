@@ -68,6 +68,8 @@ const COLOR_PALETTE = [
 ];
 
 // ── State ────────────────────────────────────────────────────────────────────
+const AUDIO_CACHE_NAME = "longdrive-audio-cache-v1";
+
 const state = {
   tracks: [],
   currentTrackId: null,
@@ -82,6 +84,8 @@ const state = {
   searchQuery: "",
   likedSongIds: new Set(),
   recentSongIds: [],
+  cachedTrackPaths: new Set(),
+  blobUrls: new Map(),
   eqPreset: "Flat",
   sleepTimer: null,
   sleepTimerEndsAt: null,
@@ -190,6 +194,154 @@ function applyEqPreset(preset) {
       midFilter.gain.setValueAtTime(0, now);
       highShelfFilter.gain.setValueAtTime(0, now);
       break;
+  }
+}
+
+// ── Offline Drive & Preload Engine (Spotify-style Lookahead Cache) ───────────
+async function initAudioCache() {
+  if (!("caches" in window)) return;
+  try {
+    const cache = await caches.open(AUDIO_CACHE_NAME);
+    const keys = await cache.keys();
+    keys.forEach(req => {
+      const url = new URL(req.url);
+      state.cachedTrackPaths.add(url.pathname);
+      state.cachedTrackPaths.add(decodeURI(url.pathname));
+      state.cachedTrackPaths.add(req.url);
+    });
+    updateCacheStorageText();
+  } catch (e) {
+    console.warn("Could not inspect audio cache:", e);
+  }
+}
+
+function updateCacheStorageText() {
+  const desc = document.getElementById("cache-storage-desc");
+  if (!desc) return;
+  const count = state.cachedTrackPaths.size;
+  if (count > 0) {
+    desc.textContent = `${count} audio file(s) saved on this device for zero-network driving.`;
+  } else {
+    desc.textContent = "Preloads complete songs into your device storage for zero-network playback.";
+  }
+}
+
+async function getPlayableAudioUrl(track) {
+  if (!track || !track.path) return "";
+  if (track.path.startsWith("blob:") || track.path.startsWith("data:")) return track.path;
+
+  // 1. In-memory blob check
+  if (state.blobUrls.has(track.path)) {
+    return state.blobUrls.get(track.path);
+  }
+
+  const encodedPath = encodeURI(track.path);
+
+  // 2. Persistent Cache API check
+  if ("caches" in window) {
+    try {
+      const cache = await caches.open(AUDIO_CACHE_NAME);
+      const fullUrl = new URL(encodedPath, window.location.href).href;
+      const cachedResponse = await cache.match(fullUrl) || await cache.match(encodedPath);
+      if (cachedResponse) {
+        const blob = await cachedResponse.blob();
+        const objUrl = URL.createObjectURL(blob);
+        state.blobUrls.set(track.path, objUrl);
+        state.cachedTrackPaths.add(track.path);
+        return objUrl;
+      }
+    } catch (e) {}
+  }
+
+  return encodedPath;
+}
+
+async function preloadTrack(track, silent = true) {
+  if (!track || !track.path || track.path.startsWith("blob:") || !("caches" in window)) return;
+  const encodedPath = encodeURI(track.path);
+  const fullUrl = new URL(encodedPath, window.location.href).href;
+
+  try {
+    const cache = await caches.open(AUDIO_CACHE_NAME);
+    const existing = await cache.match(fullUrl);
+    if (!existing) {
+      const response = await fetch(fullUrl);
+      if (response.ok) {
+        await cache.put(fullUrl, response.clone());
+        const blob = await response.blob();
+        state.blobUrls.set(track.path, URL.createObjectURL(blob));
+        state.cachedTrackPaths.add(track.path);
+        updateCacheStorageText();
+        if (!silent) {
+          showToast(`Downloaded "${track.title}" for offline drive!`);
+        }
+      }
+    } else {
+      state.cachedTrackPaths.add(track.path);
+    }
+  } catch (err) {
+    console.warn("Background preloading error for:", track.title, err);
+  }
+}
+
+async function preloadUpcomingTracks(currentTrackId) {
+  const filtered = getFilteredTracks();
+  if (filtered.length === 0) return;
+
+  const currentIdx = filtered.findIndex(t => t.id === currentTrackId);
+  const queue = [];
+
+  // Current track first if not cached
+  const current = filtered[currentIdx];
+  if (current) queue.push(current);
+
+  // Next 2 upcoming tracks in queue
+  for (let i = 1; i <= 2; i++) {
+    const nextIdx = (currentIdx + i) % filtered.length;
+    if (filtered[nextIdx] && filtered[nextIdx].id !== currentTrackId) {
+      queue.push(filtered[nextIdx]);
+    }
+  }
+
+  for (const tr of queue) {
+    await preloadTrack(tr, true);
+  }
+}
+
+async function cacheCurrentPlaylist() {
+  const filtered = getFilteredTracks();
+  if (filtered.length === 0) {
+    showToast("No tracks in this playlist to save.");
+    return;
+  }
+
+  const btnText = document.getElementById("btn-preload-text");
+  showToast(`Saving ${filtered.length} tracks to phone storage for offline drive...`);
+  
+  let done = 0;
+  for (const track of filtered) {
+    if (btnText) btnText.textContent = `Saving (${done + 1}/${filtered.length})...`;
+    await preloadTrack(track, true);
+    done++;
+  }
+
+  if (btnText) btnText.textContent = "✓ Saved for offline";
+  showToast(`✓ All ${filtered.length} tracks are saved! You can drive with zero network.`);
+  updateCacheStorageText();
+  renderSongList();
+}
+
+async function clearAudioCache() {
+  if (!("caches" in window)) return;
+  try {
+    await caches.delete(AUDIO_CACHE_NAME);
+    state.cachedTrackPaths.clear();
+    state.blobUrls.clear();
+    updateCacheStorageText();
+    renderSongList();
+    showToast("Offline audio cache cleared.");
+  } catch (e) {
+    console.warn("Could not clear cache:", e);
   }
 }
 
@@ -441,6 +593,12 @@ function renderSongList() {
       : `${filtered.length} track${filtered.length === 1 ? "" : "s"} in this album`;
   }
 
+  const allCached = filtered.length > 0 && filtered.every(t => !t.path || t.path.startsWith("blob:") || state.cachedTrackPaths.has(t.path) || state.blobUrls.has(t.path));
+  const btnPreloadText = document.getElementById("btn-preload-text");
+  if (btnPreloadText) {
+    btnPreloadText.textContent = allCached ? "✓ Saved for offline" : "Save for offline drive";
+  }
+
   if (filtered.length === 0) {
     emptyState.style.display = "block";
     return;
@@ -450,6 +608,7 @@ function renderSongList() {
   filtered.forEach((track, idx) => {
     const isCurrent = track.id === state.currentTrackId;
     const isLiked = state.likedSongIds.has(track.id);
+    const isCached = track.path && (track.path.startsWith("blob:") || state.cachedTrackPaths.has(track.path) || state.blobUrls.has(track.path));
 
     const row = document.createElement("article");
     row.className = "song-row" + (isCurrent ? " is-active" : "") + (isCurrent && state.isPlaying ? " is-playing" : "");
@@ -472,7 +631,10 @@ function renderSongList() {
       </div>
       <div class="song-info">
         <strong>${track.title}</strong>
-        <span>${track.artist || (track.folder === 'devotional' ? 'Devotional Track' : 'Selected Track')}</span>
+        <span style="display: flex; align-items: center; gap: 4px;">
+          ${track.artist || (track.folder === 'devotional' ? 'Devotional Track' : 'Selected Track')}
+          ${isCached ? '<span class="cached-badge" title="Saved on device for offline driving">⚡ Offline Ready</span>' : ''}
+        </span>
       </div>
       <span class="album-name">${track.album || (track.folder ? track.folder.replace('-', ' ') : 'Library')}</span>
       <span class="song-duration">${track.duration || '—'}</span>
@@ -503,7 +665,7 @@ function renderSongList() {
 }
 
 // ── Playback Controls ────────────────────────────────────────────────────────
-function playTrack(id, shouldAutoplay = true) {
+async function playTrack(id, shouldAutoplay = true) {
   initAudioContext();
   const track = state.tracks.find(t => t.id === id);
   if (!track) return;
@@ -514,7 +676,8 @@ function playTrack(id, shouldAutoplay = true) {
   try { localStorage.setItem("pmp_recents", JSON.stringify(state.recentSongIds)); } catch (e) {}
 
   if (track.path) {
-    audio.src = track.path.startsWith("blob:") ? track.path : encodeURI(track.path);
+    const playableUrl = await getPlayableAudioUrl(track);
+    audio.src = playableUrl;
   } else {
     audio.removeAttribute("src");
     showToast('"' + track.title + '" is a demo track.');
@@ -558,6 +721,9 @@ function playTrack(id, shouldAutoplay = true) {
 
   updateMediaSession(track);
   renderSongList();
+
+  // Spotify-style Lookahead Preload: Prefetches current and upcoming tracks into phone cache
+  preloadUpcomingTracks(id);
 }
 
 function togglePlayPause() {
@@ -1122,6 +1288,16 @@ function setupEvents() {
   document.getElementById("btn-empty-add").addEventListener("click", triggerScan);
   document.getElementById("btn-settings-scan").addEventListener("click", triggerScan);
 
+  const btnPreloadAlbum = document.getElementById("btn-preload-album");
+  if (btnPreloadAlbum) {
+    btnPreloadAlbum.addEventListener("click", cacheCurrentPlaylist);
+  }
+
+  const btnClearCache = document.getElementById("btn-clear-cache");
+  if (btnClearCache) {
+    btnClearCache.addEventListener("click", clearAudioCache);
+  }
+
   document.getElementById("btn-shuffle-all").addEventListener("click", () => {
     state.isShuffle = true;
     btnShuffle.classList.add("control-active");
@@ -1215,5 +1391,6 @@ function setupEvents() {
 // ── Initialize App ───────────────────────────────────────────────────────────
 document.addEventListener("DOMContentLoaded", () => {
   setupEvents();
+  initAudioCache();
   loadPlaylistData();
 });

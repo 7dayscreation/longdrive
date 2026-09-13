@@ -677,6 +677,20 @@ button:focus-visible, input:focus-visible, select:focus-visible {
   text-overflow: ellipsis;
 }
 
+.cached-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  color: var(--accent);
+  background: rgba(198, 233, 76, 0.1);
+  border: 1px solid rgba(198, 233, 76, 0.25);
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
 .album-name {
   font-size: 12px;
   color: #6a7165;

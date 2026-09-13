@@ -30,7 +30,7 @@
 <div id="dynamic-backdrop"></div>
 
 <!-- Audio Streamer -->
-<audio id="audio" preload="none" aria-label="Audio stream"></audio>
+<audio id="audio" preload="auto" aria-label="Audio stream"></audio>
 
 <!-- Local File Input -->
 <input type="file" id="file-input" accept="audio/*" multiple hidden aria-hidden="true" />
@@ -148,14 +148,18 @@
 
       <!-- Action Bar -->
       <div class="library-actions">
-        <div style="display: flex; gap: 8px;">
+        <div style="display: flex; gap: 8px; flex-wrap: wrap;">
           <button class="accent-button" id="btn-scan-folder" title="Add local MP3 files">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 16V4m0 0L7 9m5-5 5 5M4 20h16"/></svg>
-            <span>Scan music folder</span>
+            <span>Scan folder</span>
           </button>
           <button class="secondary-button" id="btn-shuffle-all" title="Shuffle all current tracks">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/><line x1="15" y1="15" x2="21" y2="21"/></svg>
-            <span>Shuffle all</span>
+            <span>Shuffle</span>
+          </button>
+          <button class="secondary-button" id="btn-preload-album" title="Preload this album into phone cache for offline driving">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            <span id="btn-preload-text">Save for offline drive</span>
           </button>
         </div>
         <span id="track-count-text">0 tracks</span>
@@ -338,8 +342,16 @@
 
         <div class="setting-row">
           <div>
+            <strong>Offline Drive Storage (Device Cache)</strong>
+            <span id="cache-storage-desc">Preloads complete songs into your phone storage for zero-network playback.</span>
+          </div>
+          <button class="secondary-button" id="btn-clear-cache" title="Clear locally cached audio files">Clear Cache</button>
+        </div>
+
+        <div class="setting-row">
+          <div>
             <strong>GitHub Music Repository</strong>
-            <span>Tracks auto-indexed from <code>/music/my-music/</code> & <code>/music/devotional/</code>.</span>
+            <span>Tracks auto-indexed from all subfolders in <code>/music/</code>.</span>
           </div>
           <span style="font-size: 11px; color: var(--accent); font-weight: 700;">Active & Synced</span>
         </div>
