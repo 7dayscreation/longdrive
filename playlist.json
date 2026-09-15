@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-13T09:36:44.941Z",
+  "generated": "2026-09-15T08:36:20.300Z",
   "playlists": [
     {
       "folder": "Jivan ni Pagdhare",
@@ -139,12 +139,40 @@
         {
           "id": 17,
           "folder": "devotional",
+          "filename": "Bajrang Baan.mp3",
+          "title": "Bajrang Baan",
+          "path": "music/devotional/Bajrang Baan.mp3"
+        },
+        {
+          "id": 18,
+          "folder": "devotional",
+          "filename": "Hamuman Vandana.mp3",
+          "title": "Hamuman Vandana",
+          "path": "music/devotional/Hamuman Vandana.mp3"
+        },
+        {
+          "id": 19,
+          "folder": "devotional",
+          "filename": "Hanuman Chalisa.mp3",
+          "title": "Hanuman Chalisa",
+          "path": "music/devotional/Hanuman Chalisa.mp3"
+        },
+        {
+          "id": 20,
+          "folder": "devotional",
           "filename": "Lunawada Song.mp3",
           "title": "Lunawada Song",
           "path": "music/devotional/Lunawada Song.mp3"
         },
         {
-          "id": 18,
+          "id": 21,
+          "folder": "devotional",
+          "filename": "Ramraksha Stotram.mp3",
+          "title": "Ramraksha Stotram",
+          "path": "music/devotional/Ramraksha Stotram.mp3"
+        },
+        {
+          "id": 22,
           "folder": "devotional",
           "filename": "Tahuko Hemant Chauhan.mp3",
           "title": "Tahuko Hemant Chauhan",
