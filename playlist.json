@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-17T16:43:30.926Z",
+  "generated": "2026-09-17T16:48:51.516Z",
   "playlists": [
     {
       "folder": "Jivan ni Pagdhare",
@@ -188,68 +188,75 @@
         {
           "id": 24,
           "folder": "devotional",
+          "filename": "Jevo Gano Tevo Tamaro-Mataji Stuti.mp3",
+          "title": "Jevo Gano Tevo Tamaro Mataji Stuti",
+          "path": "music/devotional/Jevo Gano Tevo Tamaro-Mataji Stuti.mp3"
+        },
+        {
+          "id": 25,
+          "folder": "devotional",
           "filename": "Kasumbi no rang - Zaverchand Meghani.mp3",
           "title": "Kasumbi No Rang Zaverchand Meghani",
           "path": "music/devotional/Kasumbi no rang - Zaverchand Meghani.mp3"
         },
         {
-          "id": 25,
+          "id": 26,
           "folder": "devotional",
           "filename": "Lunawada Song.mp3",
           "title": "Lunawada Song",
           "path": "music/devotional/Lunawada Song.mp3"
         },
         {
-          "id": 26,
+          "id": 27,
           "folder": "devotional",
           "filename": "Maae Garbo Koravyo - Hema Desai.mp3",
           "title": "Maae Garbo Koravyo Hema Desai",
           "path": "music/devotional/Maae Garbo Koravyo - Hema Desai.mp3"
         },
         {
-          "id": 27,
+          "id": 28,
           "folder": "devotional",
           "filename": "Madi Taru Kanku Kharyu-Asha Bhosle.mp3",
           "title": "Madi Taru Kanku Kharyu Asha Bhosle",
           "path": "music/devotional/Madi Taru Kanku Kharyu-Asha Bhosle.mp3"
         },
         {
-          "id": 28,
+          "id": 29,
           "folder": "devotional",
           "filename": "Mune gamto kanudo.mp3",
           "title": "Mune Gamto Kanudo",
           "path": "music/devotional/Mune gamto kanudo.mp3"
         },
         {
-          "id": 29,
+          "id": 30,
           "folder": "devotional",
           "filename": "Ramraksha Stotram.mp3",
           "title": "Ramraksha Stotram",
           "path": "music/devotional/Ramraksha Stotram.mp3"
         },
         {
-          "id": 30,
+          "id": 31,
           "folder": "devotional",
           "filename": "Tahuko Hemant Chauhan.mp3",
           "title": "Tahuko Hemant Chauhan",
           "path": "music/devotional/Tahuko Hemant Chauhan.mp3"
         },
         {
-          "id": 31,
+          "id": 32,
           "folder": "devotional",
           "filename": "Tara Dukh Ne Khankheri Nakh-original.mp3",
           "title": "Tara Dukh Ne Khankheri Nakh Original",
           "path": "music/devotional/Tara Dukh Ne Khankheri Nakh-original.mp3"
         },
         {
-          "id": 32,
+          "id": 33,
           "folder": "devotional",
           "filename": "Tara Dukh Ne Khankheri Nakh.mp3",
           "title": "Tara Dukh Ne Khankheri Nakh",
           "path": "music/devotional/Tara Dukh Ne Khankheri Nakh.mp3"
         },
         {
-          "id": 33,
+          "id": 34,
           "folder": "devotional",
           "filename": "મેરુ તો ડગે - Meru To Dage.mp3",
           "title": "મેરુ તો ડગે Meru To Dage",
