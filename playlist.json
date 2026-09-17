@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-15T09:00:29.343Z",
+  "generated": "2026-09-17T15:53:08.072Z",
   "playlists": [
     {
       "folder": "Jivan ni Pagdhare",
@@ -174,12 +174,19 @@
         {
           "id": 22,
           "folder": "devotional",
+          "filename": "Maae Garbo Koravyo - Hema Desai.mp3",
+          "title": "Maae Garbo Koravyo Hema Desai",
+          "path": "music/devotional/Maae Garbo Koravyo - Hema Desai.mp3"
+        },
+        {
+          "id": 23,
+          "folder": "devotional",
           "filename": "Ramraksha Stotram.mp3",
           "title": "Ramraksha Stotram",
           "path": "music/devotional/Ramraksha Stotram.mp3"
         },
         {
-          "id": 23,
+          "id": 24,
           "folder": "devotional",
           "filename": "Tahuko Hemant Chauhan.mp3",
           "title": "Tahuko Hemant Chauhan",
