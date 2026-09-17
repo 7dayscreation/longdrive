@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-17T15:53:08.072Z",
+  "generated": "2026-09-17T16:43:30.926Z",
   "playlists": [
     {
       "folder": "Jivan ni Pagdhare",
@@ -139,58 +139,121 @@
         {
           "id": 17,
           "folder": "devotional",
+          "filename": "Abhale Thi Utari Maa - Hema Desai.mp3",
+          "title": "Abhale Thi Utari Maa Hema Desai",
+          "path": "music/devotional/Abhale Thi Utari Maa - Hema Desai.mp3"
+        },
+        {
+          "id": 18,
+          "folder": "devotional",
+          "filename": "Ame Mahiyara re  - Narsnih Mehta.mp3",
+          "title": "Ame Mahiyara Re Narsnih Mehta",
+          "path": "music/devotional/Ame Mahiyara re  - Narsnih Mehta.mp3"
+        },
+        {
+          "id": 19,
+          "folder": "devotional",
           "filename": "Bajrang Baan.mp3",
           "title": "Bajrang Baan",
           "path": "music/devotional/Bajrang Baan.mp3"
         },
         {
-          "id": 18,
+          "id": 20,
+          "folder": "devotional",
+          "filename": "Dhuni Re Dhakhavi - LO-FI Version.mp3",
+          "title": "Dhuni Re Dhakhavi LO FI Version",
+          "path": "music/devotional/Dhuni Re Dhakhavi - LO-FI Version.mp3"
+        },
+        {
+          "id": 21,
           "folder": "devotional",
           "filename": "Hamuman Vandana.mp3",
           "title": "Hamuman Vandana",
           "path": "music/devotional/Hamuman Vandana.mp3"
         },
         {
-          "id": 19,
+          "id": 22,
           "folder": "devotional",
           "filename": "Hanuman Chalisa.mp3",
           "title": "Hanuman Chalisa",
           "path": "music/devotional/Hanuman Chalisa.mp3"
         },
         {
-          "id": 20,
+          "id": 23,
           "folder": "devotional",
           "filename": "Jay adhya Shakti.mp3",
           "title": "Jay Adhya Shakti",
           "path": "music/devotional/Jay adhya Shakti.mp3"
         },
         {
-          "id": 21,
+          "id": 24,
+          "folder": "devotional",
+          "filename": "Kasumbi no rang - Zaverchand Meghani.mp3",
+          "title": "Kasumbi No Rang Zaverchand Meghani",
+          "path": "music/devotional/Kasumbi no rang - Zaverchand Meghani.mp3"
+        },
+        {
+          "id": 25,
           "folder": "devotional",
           "filename": "Lunawada Song.mp3",
           "title": "Lunawada Song",
           "path": "music/devotional/Lunawada Song.mp3"
         },
         {
-          "id": 22,
+          "id": 26,
           "folder": "devotional",
           "filename": "Maae Garbo Koravyo - Hema Desai.mp3",
           "title": "Maae Garbo Koravyo Hema Desai",
           "path": "music/devotional/Maae Garbo Koravyo - Hema Desai.mp3"
         },
         {
-          "id": 23,
+          "id": 27,
+          "folder": "devotional",
+          "filename": "Madi Taru Kanku Kharyu-Asha Bhosle.mp3",
+          "title": "Madi Taru Kanku Kharyu Asha Bhosle",
+          "path": "music/devotional/Madi Taru Kanku Kharyu-Asha Bhosle.mp3"
+        },
+        {
+          "id": 28,
+          "folder": "devotional",
+          "filename": "Mune gamto kanudo.mp3",
+          "title": "Mune Gamto Kanudo",
+          "path": "music/devotional/Mune gamto kanudo.mp3"
+        },
+        {
+          "id": 29,
           "folder": "devotional",
           "filename": "Ramraksha Stotram.mp3",
           "title": "Ramraksha Stotram",
           "path": "music/devotional/Ramraksha Stotram.mp3"
         },
         {
-          "id": 24,
+          "id": 30,
           "folder": "devotional",
           "filename": "Tahuko Hemant Chauhan.mp3",
           "title": "Tahuko Hemant Chauhan",
           "path": "music/devotional/Tahuko Hemant Chauhan.mp3"
+        },
+        {
+          "id": 31,
+          "folder": "devotional",
+          "filename": "Tara Dukh Ne Khankheri Nakh-original.mp3",
+          "title": "Tara Dukh Ne Khankheri Nakh Original",
+          "path": "music/devotional/Tara Dukh Ne Khankheri Nakh-original.mp3"
+        },
+        {
+          "id": 32,
+          "folder": "devotional",
+          "filename": "Tara Dukh Ne Khankheri Nakh.mp3",
+          "title": "Tara Dukh Ne Khankheri Nakh",
+          "path": "music/devotional/Tara Dukh Ne Khankheri Nakh.mp3"
+        },
+        {
+          "id": 33,
+          "folder": "devotional",
+          "filename": "મેરુ તો ડગે - Meru To Dage.mp3",
+          "title": "મેરુ તો ડગે Meru To Dage",
+          "path": "music/devotional/મેરુ તો ડગે - Meru To Dage.mp3"
         }
       ]
     }
