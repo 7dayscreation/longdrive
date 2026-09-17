@@ -37,7 +37,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="stylesheet" href="style.css?v=2.4" />
+  <link rel="stylesheet" href="style.css?v=2.5" />
 </head>
 <body>
 
@@ -45,7 +45,7 @@
 <div id="dynamic-backdrop"></div>
 
 <!-- Audio Streamer -->
-<audio id="audio" preload="auto" aria-label="Audio stream"></audio>
+<audio id="audio" preload="metadata" aria-label="Audio stream"></audio>
 
 <!-- Local File Input -->
 <input type="file" id="file-input" accept="audio/*" multiple hidden aria-hidden="true" />
@@ -251,9 +251,16 @@
 
           <!-- Progress Bar -->
           <div class="progress-wrap">
-            <input type="range" class="progress-slider" id="seek-slider" min="0" max="100" value="0" step="0.1" aria-label="Track progress slider" />
+            <div class="seek-track-container" id="seek-track">
+              <canvas id="seek-buffer-canvas" class="seek-buffer-canvas" aria-hidden="true"></canvas>
+              <input type="range" class="progress-slider" id="seek-slider" min="0" max="100" value="0" step="0.1" aria-label="Track progress slider" />
+              <div class="seek-loading" id="seek-loading" aria-hidden="true" title="Seeking…">
+                <span></span><span></span><span></span>
+              </div>
+            </div>
             <div class="time">
               <span id="time-elapsed">0:00</span>
+              <span id="buffering-label" class="buffering-label">Buffering…</span>
               <span id="time-remaining">-0:00</span>
             </div>
           </div>
@@ -424,7 +431,10 @@
       <div class="bp-progress-row">
         <span class="bp-time" id="bp-time-elapsed">0:00</span>
         <div class="bp-slider-wrap">
-          <input type="range" class="progress-slider bp-seek" id="bp-seek-slider" min="0" max="100" value="0" step="0.1" aria-label="Track progress slider" />
+          <div class="seek-track-container bp-seek-track">
+            <canvas id="bp-seek-buffer-canvas" class="seek-buffer-canvas" aria-hidden="true"></canvas>
+            <input type="range" class="progress-slider bp-seek" id="bp-seek-slider" min="0" max="100" value="0" step="0.1" aria-label="Track progress slider" />
+          </div>
         </div>
         <span class="bp-time" id="bp-time-remaining">-0:00</span>
       </div>
@@ -520,6 +530,6 @@
 <!-- Floating Toast -->
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-<script src="player.js?v=2.4"></script>
+<script src="player.js?v=2.5"></script>
 </body>
 </html>

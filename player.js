@@ -338,6 +338,12 @@ const modalEq = document.getElementById("modal-eq");
 const modalTimer = document.getElementById("modal-timer");
 const toast = document.getElementById("toast");
 
+// Buffer indicators & seeking state
+const seekBufferCanvas = document.getElementById("seek-buffer-canvas");
+const bpSeekBufferCanvas = document.getElementById("bp-seek-buffer-canvas");
+const bufferingLabel = document.getElementById("buffering-label");
+let stallTimer = null; // timeout for stall recovery
+
 // ── Color & Initials Helpers ─────────────────────────────────────────────────
 function getTrackColor(str) {
   let hash = 0;
@@ -831,21 +837,157 @@ function updatePlayStateUI() {
   });
 }
 
+// ── Buffer Visualisation Helper ───────────────────────────────────────────────
+/**
+ * Paints the buffered byte-ranges onto a canvas that sits under the range
+ * input. Three layers drawn from back to front:
+ *   1. Dark track background
+ *   2. Semi-bright buffered segments (accent at 30% opacity)
+ *   3. Bright "played" segment up to currentTime
+ */
+function drawBufferCanvas(canvas, sliderEl) {
+  if (!canvas || !sliderEl) return;
+  const dur = audio.duration || 0;
+  const W = canvas.offsetWidth || sliderEl.offsetWidth || 300;
+  const H = 6;
+  canvas.width = W;
+  canvas.height = H;
+  const ctx = canvas.getContext("2d");
+
+  // 1. Background track
+  ctx.clearRect(0, 0, W, H);
+  ctx.fillStyle = "#23291f";
+  ctx.beginPath();
+  ctx.roundRect(0, 0, W, H, 3);
+  ctx.fill();
+
+  if (dur <= 0) return;
+
+  // 2. Buffered ranges
+  ctx.fillStyle = "rgba(198,233,76,0.28)";
+  try {
+    for (let i = 0; i < audio.buffered.length; i++) {
+      const startX = (audio.buffered.start(i) / dur) * W;
+      const endX   = (audio.buffered.end(i)   / dur) * W;
+      ctx.beginPath();
+      ctx.roundRect(startX, 0, endX - startX, H, 2);
+      ctx.fill();
+    }
+  } catch (_) {}
+
+  // 3. Played segment
+  const playedX = (audio.currentTime / dur) * W;
+  ctx.fillStyle = "rgba(198,233,76,0.85)";
+  ctx.beginPath();
+  ctx.roundRect(0, 0, playedX, H, 3);
+  ctx.fill();
+}
+
+function redrawAllBufferCanvases() {
+  drawBufferCanvas(seekBufferCanvas, seekSlider);
+  drawBufferCanvas(bpSeekBufferCanvas, bpSeekSlider);
+}
+
+// ── Buffering / Stall UX Helpers ─────────────────────────────────────────────
+function showBuffering() {
+  document.body.classList.add("is-buffering");
+}
+
+function hideBuffering() {
+  document.body.classList.remove("is-buffering");
+  if (stallTimer) { clearTimeout(stallTimer); stallTimer = null; }
+}
+
+function showSeeking() {
+  document.body.classList.add("is-seeking");
+}
+
+function hideSeeking() {
+  document.body.classList.remove("is-seeking");
+}
+
 // ── Audio Events (Play, Pause, Seek, Time, Ended, Error) ─────────────────────
 audio.addEventListener("play", () => {
   state.isPlaying = true;
+  hideBuffering();
+  hideSeeking();
   updatePlayStateUI();
 });
 
 audio.addEventListener("pause", () => {
   state.isPlaying = false;
+  hideBuffering();
   updatePlayStateUI();
 });
 
 audio.addEventListener("error", (e) => {
   console.warn("Audio playback stream notice:", audio.error, e);
   state.isPlaying = false;
+  hideBuffering();
+  hideSeeking();
   updatePlayStateUI();
+});
+
+// Seeking — show pulse dots on seek bars immediately
+audio.addEventListener("seeking", () => {
+  showSeeking();
+  redrawAllBufferCanvases();
+});
+
+// Seeked — hide pulse once the browser repositioned the decode head
+audio.addEventListener("seeked", () => {
+  hideSeeking();
+  redrawAllBufferCanvases();
+});
+
+// canplay — enough data to start; hide buffering indicator
+audio.addEventListener("canplay", () => {
+  hideSeeking();
+  hideBuffering();
+  redrawAllBufferCanvases();
+});
+
+// canplaythrough — full stream should play without interruption
+audio.addEventListener("canplaythrough", () => {
+  hideBuffering();
+  redrawAllBufferCanvases();
+});
+
+// progress — buffer has grown; repaint buffer canvases
+audio.addEventListener("progress", () => {
+  redrawAllBufferCanvases();
+});
+
+// stalled — browser stopped receiving data; show "Buffering…" and retry
+audio.addEventListener("stalled", () => {
+  if (!state.isPlaying) return;
+  showBuffering();
+  if (stallTimer) clearTimeout(stallTimer);
+  stallTimer = setTimeout(() => {
+    // Try a lightweight play() nudge to restart the stalled download
+    if (state.isPlaying && audio.paused) {
+      audio.play().catch(() => {});
+    }
+    stallTimer = null;
+  }, 3500);
+});
+
+// waiting — decoder ran out of data mid-playback
+audio.addEventListener("waiting", () => {
+  if (!state.isPlaying) return;
+  showBuffering();
+  if (stallTimer) clearTimeout(stallTimer);
+  stallTimer = setTimeout(() => {
+    if (state.isPlaying && audio.readyState < 3) {
+      // Re-assign src at same time position to force re-buffering
+      const t = audio.currentTime;
+      audio.load();
+      audio.currentTime = t;
+      audio.play().catch(() => {});
+    }
+    hideBuffering();
+    stallTimer = null;
+  }, 4000);
 });
 
 audio.addEventListener("timeupdate", () => {
@@ -870,6 +1012,9 @@ audio.addEventListener("timeupdate", () => {
     if (timeRemaining) timeRemaining.textContent = "-0:00";
     if (bpTimeRemaining) bpTimeRemaining.textContent = "-0:00";
   }
+
+  // Repaint buffer bar every second (throttled by browser timeupdate rate ~4Hz)
+  redrawAllBufferCanvases();
 
   if (state.sleepTimerEndsAt && Date.now() >= state.sleepTimerEndsAt) {
     cancelSleepTimer();
