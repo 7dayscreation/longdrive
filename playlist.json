@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-17T17:00:18.592Z",
+  "generated": "2026-09-17T17:53:06.856Z",
   "playlists": [
     {
       "folder": "Jivan ni Pagdhare",
@@ -271,6 +271,13 @@
         },
         {
           "id": 36,
+          "folder": "devotional",
+          "filename": "દુધે તે ભરી તલાવડી  Asha Bhosle.mp3",
+          "title": "દુધે તે ભરી તલાવડી Asha Bhosle",
+          "path": "music/devotional/દુધે તે ભરી તલાવડી  Asha Bhosle.mp3"
+        },
+        {
+          "id": 37,
           "folder": "devotional",
           "filename": "મેરુ તો ડગે - Meru To Dage.mp3",
           "title": "મેરુ તો ડગે Meru To Dage",
