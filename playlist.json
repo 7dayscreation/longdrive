@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-17T16:48:51.516Z",
+  "generated": "2026-09-17T17:00:18.592Z",
   "playlists": [
     {
       "folder": "Jivan ni Pagdhare",
@@ -223,40 +223,54 @@
         {
           "id": 29,
           "folder": "devotional",
+          "filename": "Mune Ekli Jani Ne Kane Chhedi Re.mp3",
+          "title": "Mune Ekli Jani Ne Kane Chhedi Re",
+          "path": "music/devotional/Mune Ekli Jani Ne Kane Chhedi Re.mp3"
+        },
+        {
+          "id": 30,
+          "folder": "devotional",
           "filename": "Mune gamto kanudo.mp3",
           "title": "Mune Gamto Kanudo",
           "path": "music/devotional/Mune gamto kanudo.mp3"
         },
         {
-          "id": 30,
+          "id": 31,
+          "folder": "devotional",
+          "filename": "Pratham Pehla - Ganesh Bhajan.mp3",
+          "title": "Pratham Pehla Ganesh Bhajan",
+          "path": "music/devotional/Pratham Pehla - Ganesh Bhajan.mp3"
+        },
+        {
+          "id": 32,
           "folder": "devotional",
           "filename": "Ramraksha Stotram.mp3",
           "title": "Ramraksha Stotram",
           "path": "music/devotional/Ramraksha Stotram.mp3"
         },
         {
-          "id": 31,
+          "id": 33,
           "folder": "devotional",
           "filename": "Tahuko Hemant Chauhan.mp3",
           "title": "Tahuko Hemant Chauhan",
           "path": "music/devotional/Tahuko Hemant Chauhan.mp3"
         },
         {
-          "id": 32,
+          "id": 34,
           "folder": "devotional",
           "filename": "Tara Dukh Ne Khankheri Nakh-original.mp3",
           "title": "Tara Dukh Ne Khankheri Nakh Original",
           "path": "music/devotional/Tara Dukh Ne Khankheri Nakh-original.mp3"
         },
         {
-          "id": 33,
+          "id": 35,
           "folder": "devotional",
           "filename": "Tara Dukh Ne Khankheri Nakh.mp3",
           "title": "Tara Dukh Ne Khankheri Nakh",
           "path": "music/devotional/Tara Dukh Ne Khankheri Nakh.mp3"
         },
         {
-          "id": 34,
+          "id": 36,
           "folder": "devotional",
           "filename": "મેરુ તો ડગે - Meru To Dage.mp3",
           "title": "મેરુ તો ડગે Meru To Dage",
