@@ -970,10 +970,21 @@ button:focus-visible, input:focus-visible, select:focus-visible {
   line-height: 1.8;
   color: #626960;
   max-width: 440px;
+  max-height: 200px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #2c3327 transparent;
 }
 
+.lyrics::-webkit-scrollbar {
+  width: 3px;
+}
+
+.lyrics::-webkit-scrollbar-track { background: transparent; }
+.lyrics::-webkit-scrollbar-thumb { background: #2c3327; border-radius: 2px; }
+
 .lyrics p {
-  margin: 0;
+  margin: 0 0 6px;
   transition: color 0.3s;
 }
 
@@ -985,6 +996,65 @@ button:focus-visible, input:focus-visible, select:focus-visible {
 .lyrics .faded-lyric {
   color: #41473f;
 }
+
+/* ── Lyrics dynamic states ─── */
+
+/* "♪ LYRICS" badge shown above lyrics content */
+.lyrics-badge {
+  font-size: 9px !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.12em !important;
+  color: var(--accent) !important;
+  text-transform: uppercase;
+  margin: 0 0 10px !important;
+  padding: 2px 6px;
+  background: rgba(198,233,76,0.10);
+  border-radius: 3px;
+  display: inline-block;
+}
+
+/* Each lyric paragraph block */
+.lyric-para {
+  color: #818879;
+  font-family: inherit;
+  word-break: break-word;
+  unicode-bidi: normal;
+}
+
+.lyric-para.active-lyric {
+  color: #eef2e7;
+  font-weight: 600;
+}
+
+.lyric-para.faded-lyric {
+  color: #41473f;
+}
+
+/* Graceful empty / error message */
+.lyrics-empty {
+  color: #41473f !important;
+  font-style: italic;
+  font-size: 12px !important;
+}
+
+/* Loading pulse dots (reuse seek-pulse keyframes) */
+.lyrics-loading {
+  display: flex !important;
+  align-items: center;
+  gap: 5px;
+  margin: 8px 0 !important;
+}
+
+.lyrics-loading span {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #41473f;
+  animation: seek-pulse 0.7s ease-in-out infinite alternate;
+}
+
+.lyrics-loading span:nth-child(2) { animation-delay: 0.2s; }
+.lyrics-loading span:nth-child(3) { animation-delay: 0.4s; }
 
 .progress-wrap {
   margin-bottom: 8px;

@@ -667,10 +667,98 @@ function playTrack(id, shouldAutoplay = true) {
   updateMediaSession(track);
   renderSongList();
 
+  // Load lyrics for this track (non-blocking)
+  loadLyrics(track);
+
   // Background lookahead caching without blocking playback
   setTimeout(() => {
     preloadUpcomingTracks(id);
   }, 100);
+}
+
+// ── Lyrics Engine ─────────────────────────────────────────────────────────────
+/**
+ * Convention: lyrics live next to the audio file with the same base name
+ * but a .txt extension.
+ *   music/devotional/Song Name.mp3  →  music/devotional/Song Name.txt
+ *
+ * The .txt file can contain plain paragraphs separated by blank lines.
+ * Lines that match TurboScribe headers like
+ *   "(Transcribed by TurboScribe. Go Unlimited to remove this message.)"
+ * are automatically stripped.
+ */
+const lyricsPanel = document.querySelector(".lyrics");
+
+function clearLyrics(message = "") {
+  if (!lyricsPanel) return;
+  lyricsPanel.innerHTML = message
+    ? `<p class="lyrics-empty">${message}</p>`
+    : `<p class="lyrics-loading"><span></span><span></span><span></span></p>`;
+}
+
+async function loadLyrics(track) {
+  if (!lyricsPanel) return;
+
+  // No path → sample/demo track
+  if (!track || !track.path || track.path.startsWith("blob:")) {
+    clearLyrics("♪ No lyrics for demo tracks.");
+    return;
+  }
+
+  // Derive .txt path from .mp3 path
+  const txtPath = track.path.replace(/\.[^.]+$/, ".txt");
+  const txtUrl  = encodeURI(txtPath);
+
+  // Show loading state immediately
+  clearLyrics();
+
+  try {
+    const res = await fetch(txtUrl, { cache: "default" });
+
+    if (!res.ok) {
+      // 404 or other error → no lyrics file
+      clearLyrics("♪ Lyrics not available for this track.");
+      return;
+    }
+
+    const raw = await res.text();
+
+    // Strip known transcription headers/footers
+    const STRIP_PATTERNS = [
+      /^\s*\(Transcribed by TurboScribe\..*?\)\s*$/gim,
+      /^\s*Go Unlimited to remove this message\.?\s*$/gim,
+    ];
+
+    let cleaned = raw;
+    for (const pat of STRIP_PATTERNS) {
+      cleaned = cleaned.replace(pat, "");
+    }
+
+    // Split into non-empty paragraph blocks
+    const paragraphs = cleaned
+      .split(/\n{2,}/)                          // blank line = paragraph separator
+      .map(p => p.replace(/\r/g, "").trim())    // remove CR, trim
+      .filter(p => p.length > 0);              // drop empty blocks
+
+    if (paragraphs.length === 0) {
+      clearLyrics("♪ Lyrics file is empty.");
+      return;
+    }
+
+    // Render — each paragraph as one block; within a paragraph newlines stay
+    lyricsPanel.innerHTML =
+      `<p class="lyrics-badge">♪ LYRICS</p>` +
+      paragraphs.map((para, i) => {
+        // Within a paragraph, split lines and join with <br>
+        const lines = para.split("\n").map(l => l.trim()).filter(l => l.length > 0);
+        const cls   = i === 0 ? "active-lyric" : (i === paragraphs.length - 1 ? "faded-lyric" : "");
+        return `<p class="lyric-para ${cls}">${lines.join("<br>")}</p>`;
+      }).join("");
+
+  } catch (err) {
+    console.warn("[lyrics] Fetch error:", err);
+    clearLyrics("♪ Could not load lyrics.");
+  }
 }
 
 function togglePlayPause() {
