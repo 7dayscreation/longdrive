@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-14T06:41:42.076Z",
+  "generated": "2026-11-14T07:05:36.647Z",
   "playlists": [
     {
       "folder": "Jivan ni Pagdhare",
@@ -105,82 +105,782 @@
         {
           "id": 13,
           "folder": "Old is Gold",
+          "filename": "Aa_Chal_Ke_Tujhe.mp3",
+          "title": "Aa Chal Ke Tujhe",
+          "path": "music/Old is Gold/Aa_Chal_Ke_Tujhe.mp3"
+        },
+        {
+          "id": 14,
+          "folder": "Old is Gold",
+          "filename": "Aake_Seedhi_Lagi_Dil_Pe.mp3",
+          "title": "Aake Seedhi Lagi Dil Pe",
+          "path": "music/Old is Gold/Aake_Seedhi_Lagi_Dil_Pe.mp3"
+        },
+        {
+          "id": 15,
+          "folder": "Old is Gold",
           "filename": "Aane_Wala_Pal.mp3",
           "title": "Aane Wala Pal",
           "path": "music/Old is Gold/Aane_Wala_Pal.mp3"
         },
         {
-          "id": 14,
+          "id": 16,
+          "folder": "Old is Gold",
+          "filename": "Aapke_Anurodh_Pe.mp3",
+          "title": "Aapke Anurodh Pe",
+          "path": "music/Old is Gold/Aapke_Anurodh_Pe.mp3"
+        },
+        {
+          "id": 17,
+          "folder": "Old is Gold",
+          "filename": "Aate_Jaate_Khobsurat.mp3",
+          "title": "Aate Jaate Khobsurat",
+          "path": "music/Old is Gold/Aate_Jaate_Khobsurat.mp3"
+        },
+        {
+          "id": 18,
+          "folder": "Old is Gold",
+          "filename": "Akhiyon_Ke_Jharonkon_Se.mp3",
+          "title": "Akhiyon Ke Jharonkon Se",
+          "path": "music/Old is Gold/Akhiyon_Ke_Jharonkon_Se.mp3"
+        },
+        {
+          "id": 19,
+          "folder": "Old is Gold",
+          "filename": "Apni_tu_jaise_taise-_Lawaris.mp3",
+          "title": "Apni Tu Jaise Taise Lawaris",
+          "path": "music/Old is Gold/Apni_tu_jaise_taise-_Lawaris.mp3"
+        },
+        {
+          "id": 20,
+          "folder": "Old is Gold",
+          "filename": "Bachna_Ae_Haseeno_Lo_Main_Aa.mp3",
+          "title": "Bachna Ae Haseeno Lo Main Aa",
+          "path": "music/Old is Gold/Bachna_Ae_Haseeno_Lo_Main_Aa.mp3"
+        },
+        {
+          "id": 21,
+          "folder": "Old is Gold",
+          "filename": "Bahoot_Khoobsoorat_Ek_Ladki.mp3",
+          "title": "Bahoot Khoobsoorat Ek Ladki",
+          "path": "music/Old is Gold/Bahoot_Khoobsoorat_Ek_Ladki.mp3"
+        },
+        {
+          "id": 22,
+          "folder": "Old is Gold",
+          "filename": "Bhanware_Ki_Gunjan.mp3",
+          "title": "Bhanware Ki Gunjan",
+          "path": "music/Old is Gold/Bhanware_Ki_Gunjan.mp3"
+        },
+        {
+          "id": 23,
+          "folder": "Old is Gold",
+          "filename": "Bhole_O_Bhole_From_Yaarana_From_Yaarana.mp3",
+          "title": "Bhole O Bhole From Yaarana From Yaarana",
+          "path": "music/Old is Gold/Bhole_O_Bhole_From_Yaarana_From_Yaarana.mp3"
+        },
+        {
+          "id": 24,
+          "folder": "Old is Gold",
+          "filename": "Chal_Chal_Chal_Mere_Saathi.mp3",
+          "title": "Chal Chal Chal Mere Saathi",
+          "path": "music/Old is Gold/Chal_Chal_Chal_Mere_Saathi.mp3"
+        },
+        {
+          "id": 25,
+          "folder": "Old is Gold",
+          "filename": "Chalte_Chalte_Remix_Remix.aac",
+          "title": "Chalte Chalte Remix Remix",
+          "path": "music/Old is Gold/Chalte_Chalte_Remix_Remix.aac"
+        },
+        {
+          "id": 26,
+          "folder": "Old is Gold",
+          "filename": "Chingari_Koi_Bhadke.mp3",
+          "title": "Chingari Koi Bhadke",
+          "path": "music/Old is Gold/Chingari_Koi_Bhadke.mp3"
+        },
+        {
+          "id": 27,
           "folder": "Old is Gold",
           "filename": "Choo_Kar_Mere_Man_Ko.mp3",
           "title": "Choo Kar Mere Man Ko",
           "path": "music/Old is Gold/Choo_Kar_Mere_Man_Ko.mp3"
         },
         {
-          "id": 15,
+          "id": 28,
+          "folder": "Old is Gold",
+          "filename": "Chukar_Mere_Mann_Ko.mp3",
+          "title": "Chukar Mere Mann Ko",
+          "path": "music/Old is Gold/Chukar_Mere_Mann_Ko.mp3"
+        },
+        {
+          "id": 29,
+          "folder": "Old is Gold",
+          "filename": "Churi_Nahin_Yeh_Mera_Dil_Hai.mp3",
+          "title": "Churi Nahin Yeh Mera Dil Hai",
+          "path": "music/Old is Gold/Churi_Nahin_Yeh_Mera_Dil_Hai.mp3"
+        },
+        {
+          "id": 30,
+          "folder": "Old is Gold",
+          "filename": "De_De_Pyar_De_From_Sharabi.aac",
+          "title": "De De Pyar De From Sharabi",
+          "path": "music/Old is Gold/De_De_Pyar_De_From_Sharabi.aac"
+        },
+        {
+          "id": 31,
+          "folder": "Old is Gold",
+          "filename": "Deewana_Leke_Aaya_Hai.mp3",
+          "title": "Deewana Leke Aaya Hai",
+          "path": "music/Old is Gold/Deewana_Leke_Aaya_Hai.mp3"
+        },
+        {
+          "id": 32,
+          "folder": "Old is Gold",
+          "filename": "Dekha_Na_Haye_Re_Socha_Na.mp3",
+          "title": "Dekha Na Haye Re Socha Na",
+          "path": "music/Old is Gold/Dekha_Na_Haye_Re_Socha_Na.mp3"
+        },
+        {
+          "id": 33,
+          "folder": "Old is Gold",
+          "filename": "Dheere_Se_Jaana.mp3",
+          "title": "Dheere Se Jaana",
+          "path": "music/Old is Gold/Dheere_Se_Jaana.mp3"
+        },
+        {
+          "id": 34,
+          "folder": "Old is Gold",
+          "filename": "Dil_Aaj_Shayar_Hai.mp3",
+          "title": "Dil Aaj Shayar Hai",
+          "path": "music/Old is Gold/Dil_Aaj_Shayar_Hai.mp3"
+        },
+        {
+          "id": 35,
+          "folder": "Old is Gold",
+          "filename": "Dil_Kya_Kare_From_Julie_From_Julie.mp3",
+          "title": "Dil Kya Kare From Julie From Julie",
+          "path": "music/Old is Gold/Dil_Kya_Kare_From_Julie_From_Julie.mp3"
+        },
+        {
+          "id": 36,
+          "folder": "Old is Gold",
+          "filename": "Dil_Kya_Kare_Jab.mp3",
+          "title": "Dil Kya Kare Jab",
+          "path": "music/Old is Gold/Dil_Kya_Kare_Jab.mp3"
+        },
+        {
+          "id": 37,
+          "folder": "Old is Gold",
+          "filename": "Diye_Jalte_Hain.mp3",
+          "title": "Diye Jalte Hain",
+          "path": "music/Old is Gold/Diye_Jalte_Hain.mp3"
+        },
+        {
+          "id": 38,
           "folder": "Old is Gold",
           "filename": "Dream_Girl.mp3",
           "title": "Dream Girl",
           "path": "music/Old is Gold/Dream_Girl.mp3"
         },
         {
-          "id": 16,
+          "id": 39,
+          "folder": "Old is Gold",
+          "filename": "Ek_Ajnabee_Haseena_Se.mp3",
+          "title": "Ek Ajnabee Haseena Se",
+          "path": "music/Old is Gold/Ek_Ajnabee_Haseena_Se.mp3"
+        },
+        {
+          "id": 40,
+          "folder": "Old is Gold",
+          "filename": "Ek_Ladki_Bheegi_Bheegi_Si.mp3",
+          "title": "Ek Ladki Bheegi Bheegi Si",
+          "path": "music/Old is Gold/Ek_Ladki_Bheegi_Bheegi_Si.mp3"
+        },
+        {
+          "id": 41,
+          "folder": "Old is Gold",
+          "filename": "Gaata_Rahe_Mera_Dil.mp3",
+          "title": "Gaata Rahe Mera Dil",
+          "path": "music/Old is Gold/Gaata_Rahe_Mera_Dil.mp3"
+        },
+        {
+          "id": 42,
+          "folder": "Old is Gold",
+          "filename": "Gham_Ka_Fasana.mp3",
+          "title": "Gham Ka Fasana",
+          "path": "music/Old is Gold/Gham_Ka_Fasana.mp3"
+        },
+        {
+          "id": 43,
+          "folder": "Old is Gold",
+          "filename": "Ghunghroo_Ki_Tarah.mp3",
+          "title": "Ghunghroo Ki Tarah",
+          "path": "music/Old is Gold/Ghunghroo_Ki_Tarah.mp3"
+        },
+        {
+          "id": 44,
+          "folder": "Old is Gold",
+          "filename": "Haal_Kya_Hai_Dilon_Ka.mp3",
+          "title": "Haal Kya Hai Dilon Ka",
+          "path": "music/Old is Gold/Haal_Kya_Hai_Dilon_Ka.mp3"
+        },
+        {
+          "id": 45,
+          "folder": "Old is Gold",
+          "filename": "Hum_Bolega_To_Bologe_Ke.mp3",
+          "title": "Hum Bolega To Bologe Ke",
+          "path": "music/Old is Gold/Hum_Bolega_To_Bologe_Ke.mp3"
+        },
+        {
+          "id": 46,
+          "folder": "Old is Gold",
+          "filename": "Hum_To_Mohabbat_Karega.mp3",
+          "title": "Hum To Mohabbat Karega",
+          "path": "music/Old is Gold/Hum_To_Mohabbat_Karega.mp3"
+        },
+        {
+          "id": 47,
+          "folder": "Old is Gold",
+          "filename": "Humein_Tumse_Pyar_Kitna.mp3",
+          "title": "Humein Tumse Pyar Kitna",
+          "path": "music/Old is Gold/Humein_Tumse_Pyar_Kitna.mp3"
+        },
+        {
+          "id": 48,
+          "folder": "Old is Gold",
+          "filename": "Jaaneman_Jaaneman.mp3",
+          "title": "Jaaneman Jaaneman",
+          "path": "music/Old is Gold/Jaaneman_Jaaneman.mp3"
+        },
+        {
+          "id": 49,
+          "folder": "Old is Gold",
+          "filename": "Jahan_Teri_Yeh_Nazar_Hai.mp3",
+          "title": "Jahan Teri Yeh Nazar Hai",
+          "path": "music/Old is Gold/Jahan_Teri_Yeh_Nazar_Hai.mp3"
+        },
+        {
+          "id": 50,
+          "folder": "Old is Gold",
+          "filename": "Jawani_O_Deewani.mp3",
+          "title": "Jawani O Deewani",
+          "path": "music/Old is Gold/Jawani_O_Deewani.mp3"
+        },
+        {
+          "id": 51,
           "folder": "Old is Gold",
           "filename": "Jeevan_Ke_Din_-_Bade_Dil_Wala.mp3",
           "title": "Jeevan Ke Din Bade Dil Wala",
           "path": "music/Old is Gold/Jeevan_Ke_Din_-_Bade_Dil_Wala.mp3"
         },
         {
-          "id": 17,
+          "id": 52,
+          "folder": "Old is Gold",
+          "filename": "Jeevan_Ke_Safar_Mein_Rahi.mp3",
+          "title": "Jeevan Ke Safar Mein Rahi",
+          "path": "music/Old is Gold/Jeevan_Ke_Safar_Mein_Rahi.mp3"
+        },
+        {
+          "id": 53,
+          "folder": "Old is Gold",
+          "filename": "Jeevan_Se_Bhari_Teri_Ankhen.mp3",
+          "title": "Jeevan Se Bhari Teri Ankhen",
+          "path": "music/Old is Gold/Jeevan_Se_Bhari_Teri_Ankhen.mp3"
+        },
+        {
+          "id": 54,
+          "folder": "Old is Gold",
+          "filename": "Kaliram_Ka_Khul_Gaya_Poll.mp3",
+          "title": "Kaliram Ka Khul Gaya Poll",
+          "path": "music/Old is Gold/Kaliram_Ka_Khul_Gaya_Poll.mp3"
+        },
+        {
+          "id": 55,
+          "folder": "Old is Gold",
+          "filename": "Kasme_Vaade_Nibhayenge_Hum.mp3",
+          "title": "Kasme Vaade Nibhayenge Hum",
+          "path": "music/Old is Gold/Kasme_Vaade_Nibhayenge_Hum.mp3"
+        },
+        {
+          "id": 56,
+          "folder": "Old is Gold",
+          "filename": "Khaike_Paan_Banaras_Wala.mp3",
+          "title": "Khaike Paan Banaras Wala",
+          "path": "music/Old is Gold/Khaike_Paan_Banaras_Wala.mp3"
+        },
+        {
+          "id": 57,
+          "folder": "Old is Gold",
+          "filename": "Khaike_Paan_Banaraswala.mp3",
+          "title": "Khaike Paan Banaraswala",
+          "path": "music/Old is Gold/Khaike_Paan_Banaraswala.mp3"
+        },
+        {
+          "id": 58,
+          "folder": "Old is Gold",
+          "filename": "Khatoon_Ki_Khidmat_Mein.mp3",
+          "title": "Khatoon Ki Khidmat Mein",
+          "path": "music/Old is Gold/Khatoon_Ki_Khidmat_Mein.mp3"
+        },
+        {
+          "id": 59,
+          "folder": "Old is Gold",
+          "filename": "Khilte_Hain_Gul_Yahan.mp3",
+          "title": "Khilte Hain Gul Yahan",
+          "path": "music/Old is Gold/Khilte_Hain_Gul_Yahan.mp3"
+        },
+        {
+          "id": 60,
+          "folder": "Old is Gold",
+          "filename": "Kisi_Shaayar_Ki_Ghazal.mp3",
+          "title": "Kisi Shaayar Ki Ghazal",
+          "path": "music/Old is Gold/Kisi_Shaayar_Ki_Ghazal.mp3"
+        },
+        {
+          "id": 61,
+          "folder": "Old is Gold",
+          "filename": "Kitne_Bhi_Tu_Karle_Sitam.mp3",
+          "title": "Kitne Bhi Tu Karle Sitam",
+          "path": "music/Old is Gold/Kitne_Bhi_Tu_Karle_Sitam.mp3"
+        },
+        {
+          "id": 62,
+          "folder": "Old is Gold",
+          "filename": "Koi_Humdum_Na_Raha.mp3",
+          "title": "Koi Humdum Na Raha",
+          "path": "music/Old is Gold/Koi_Humdum_Na_Raha.mp3"
+        },
+        {
+          "id": 63,
+          "folder": "Old is Gold",
+          "filename": "Luk_chhip_luk_shhip_jaona.mp3",
+          "title": "Luk Chhip Luk Shhip Jaona",
+          "path": "music/Old is Gold/Luk_chhip_luk_shhip_jaona.mp3"
+        },
+        {
+          "id": 64,
+          "folder": "Old is Gold",
+          "filename": "Main_Shair_Badnaam.mp3",
+          "title": "Main Shair Badnaam",
+          "path": "music/Old is Gold/Main_Shair_Badnaam.mp3"
+        },
+        {
+          "id": 65,
+          "folder": "Old is Gold",
+          "filename": "Mannu_Bhai_Motor_Chali_Pum_Pum_Pum.mp3",
+          "title": "Mannu Bhai Motor Chali Pum Pum Pum",
+          "path": "music/Old is Gold/Mannu_Bhai_Motor_Chali_Pum_Pum_Pum.mp3"
+        },
+        {
+          "id": 66,
+          "folder": "Old is Gold",
+          "filename": "Mere_bhole_balam_mere_pyare_balam.mp3",
+          "title": "Mere Bhole Balam Mere Pyare Balam",
+          "path": "music/Old is Gold/Mere_bhole_balam_mere_pyare_balam.mp3"
+        },
+        {
+          "id": 67,
+          "folder": "Old is Gold",
+          "filename": "Mere_Naina_Sawan_Bhadoo.mp3",
+          "title": "Mere Naina Sawan Bhadoo",
+          "path": "music/Old is Gold/Mere_Naina_Sawan_Bhadoo.mp3"
+        },
+        {
+          "id": 68,
+          "folder": "Old is Gold",
+          "filename": "Mere_Samne_Wali_Khirki_Mein.mp3",
+          "title": "Mere Samne Wali Khirki Mein",
+          "path": "music/Old is Gold/Mere_Samne_Wali_Khirki_Mein.mp3"
+        },
+        {
+          "id": 69,
+          "folder": "Old is Gold",
+          "filename": "Mere_Sapnon_Ki_Ran.mp3",
+          "title": "Mere Sapnon Ki Ran",
+          "path": "music/Old is Gold/Mere_Sapnon_Ki_Ran.mp3"
+        },
+        {
+          "id": 70,
+          "folder": "Old is Gold",
+          "filename": "Musafir_Hoon_Yaaro.mp3",
+          "title": "Musafir Hoon Yaaro",
+          "path": "music/Old is Gold/Musafir_Hoon_Yaaro.mp3"
+        },
+        {
+          "id": 71,
+          "folder": "Old is Gold",
+          "filename": "Naach_Meri_Bulbul_From_Roti_From_Roti.mp3",
+          "title": "Naach Meri Bulbul From Roti From Roti",
+          "path": "music/Old is Gold/Naach_Meri_Bulbul_From_Roti_From_Roti.mp3"
+        },
+        {
+          "id": 72,
+          "folder": "Old is Gold",
+          "filename": "Nadiya_Se_Dariya.mp3",
+          "title": "Nadiya Se Dariya",
+          "path": "music/Old is Gold/Nadiya_Se_Dariya.mp3"
+        },
+        {
+          "id": 73,
+          "folder": "Old is Gold",
+          "filename": "Nafrat_Karne_Waalon_Ke.mp3",
+          "title": "Nafrat Karne Waalon Ke",
+          "path": "music/Old is Gold/Nafrat_Karne_Waalon_Ke.mp3"
+        },
+        {
+          "id": 74,
+          "folder": "Old is Gold",
+          "filename": "Nakharewaali.mp3",
+          "title": "Nakharewaali",
+          "path": "music/Old is Gold/Nakharewaali.mp3"
+        },
+        {
+          "id": 75,
+          "folder": "Old is Gold",
+          "filename": "Nazrana_Bheja_Kisi_Ne_Pyaar_Ka.mp3",
+          "title": "Nazrana Bheja Kisi Ne Pyaar Ka",
+          "path": "music/Old is Gold/Nazrana_Bheja_Kisi_Ne_Pyaar_Ka.mp3"
+        },
+        {
+          "id": 76,
+          "folder": "Old is Gold",
+          "filename": "Neele_neele_ambar_par.mp3",
+          "title": "Neele Neele Ambar Par",
+          "path": "music/Old is Gold/Neele_neele_ambar_par.mp3"
+        },
+        {
+          "id": 77,
+          "folder": "Old is Gold",
+          "filename": "O_Hansini.mp3",
+          "title": "O Hansini",
+          "path": "music/Old is Gold/O_Hansini.mp3"
+        },
+        {
+          "id": 78,
+          "folder": "Old is Gold",
+          "filename": "O_Majhi_Re.mp3",
+          "title": "O Majhi Re",
+          "path": "music/Old is Gold/O_Majhi_Re.mp3"
+        },
+        {
+          "id": 79,
+          "folder": "Old is Gold",
+          "filename": "O_Manjhi_Re.mp3",
+          "title": "O Manjhi Re",
+          "path": "music/Old is Gold/O_Manjhi_Re.mp3"
+        },
+        {
+          "id": 80,
           "folder": "Old is Gold",
           "filename": "O_Mere_Dil_Ke_Chain.mp3",
           "title": "O Mere Dil Ke Chain",
           "path": "music/Old is Gold/O_Mere_Dil_Ke_Chain.mp3"
         },
         {
-          "id": 18,
+          "id": 81,
+          "folder": "Old is Gold",
+          "filename": "O_Mere_Raja.mp3",
+          "title": "O Mere Raja",
+          "path": "music/Old is Gold/O_Mere_Raja.mp3"
+        },
+        {
+          "id": 82,
+          "folder": "Old is Gold",
+          "filename": "O_Meri_Sharmilee.mp3",
+          "title": "O Meri Sharmilee",
+          "path": "music/Old is Gold/O_Meri_Sharmilee.mp3"
+        },
+        {
+          "id": 83,
+          "folder": "Old is Gold",
+          "filename": "O_Meri_Soni.mp3",
+          "title": "O Meri Soni",
+          "path": "music/Old is Gold/O_Meri_Soni.mp3"
+        },
+        {
+          "id": 84,
+          "folder": "Old is Gold",
+          "filename": "O_Saathi_Re.mp3",
+          "title": "O Saathi Re",
+          "path": "music/Old is Gold/O_Saathi_Re.mp3"
+        },
+        {
+          "id": 85,
+          "folder": "Old is Gold",
+          "filename": "Pag_Ghungroo_Bandh.mp3",
+          "title": "Pag Ghungroo Bandh",
+          "path": "music/Old is Gold/Pag_Ghungroo_Bandh.mp3"
+        },
+        {
+          "id": 86,
+          "folder": "Old is Gold",
+          "filename": "Pal_Bhar_Ke_Liye_Koi_Hame_Pyaar_Karle.mp3",
+          "title": "Pal Bhar Ke Liye Koi Hame Pyaar Karle",
+          "path": "music/Old is Gold/Pal_Bhar_Ke_Liye_Koi_Hame_Pyaar_Karle.mp3"
+        },
+        {
+          "id": 87,
+          "folder": "Old is Gold",
+          "filename": "Panthi_Hoon_Main.mp3",
+          "title": "Panthi Hoon Main",
+          "path": "music/Old is Gold/Panthi_Hoon_Main.mp3"
+        },
+        {
+          "id": 88,
+          "folder": "Old is Gold",
+          "filename": "Phoolon_Ka_Taaron_Ka.mp3",
+          "title": "Phoolon Ka Taaron Ka",
+          "path": "music/Old is Gold/Phoolon_Ka_Taaron_Ka.mp3"
+        },
+        {
+          "id": 89,
           "folder": "Old is Gold",
           "filename": "Phoolon_Ke_Rang_Se.mp3",
           "title": "Phoolon Ke Rang Se",
           "path": "music/Old is Gold/Phoolon_Ke_Rang_Se.mp3"
         },
         {
-          "id": 19,
+          "id": 90,
+          "folder": "Old is Gold",
+          "filename": "Priye_Praneshwari.mp3",
+          "title": "Priye Praneshwari",
+          "path": "music/Old is Gold/Priye_Praneshwari.mp3"
+        },
+        {
+          "id": 91,
           "folder": "Old is Gold",
           "filename": "Pyar_Diwana_Hota_Hai.mp3",
           "title": "Pyar Diwana Hota Hai",
           "path": "music/Old is Gold/Pyar_Diwana_Hota_Hai.mp3"
         },
         {
-          "id": 20,
+          "id": 92,
+          "folder": "Old is Gold",
+          "filename": "Pyar_Manga_Hai_Tumhi_Se.mp3",
+          "title": "Pyar Manga Hai Tumhi Se",
+          "path": "music/Old is Gold/Pyar_Manga_Hai_Tumhi_Se.mp3"
+        },
+        {
+          "id": 93,
+          "folder": "Old is Gold",
+          "filename": "Raat_Kali_Ek_Khawab_Mein_Aayi.mp3",
+          "title": "Raat Kali Ek Khawab Mein Aayi",
+          "path": "music/Old is Gold/Raat_Kali_Ek_Khawab_Mein_Aayi.mp3"
+        },
+        {
+          "id": 94,
+          "folder": "Old is Gold",
+          "filename": "Raat_Kali_Ek_Khwaab_Mein_Aayi.mp3",
+          "title": "Raat Kali Ek Khwaab Mein Aayi",
+          "path": "music/Old is Gold/Raat_Kali_Ek_Khwaab_Mein_Aayi.mp3"
+        },
+        {
+          "id": 95,
+          "folder": "Old is Gold",
+          "filename": "Rafta_Rafta_Dekho_RAAG.ME.mp3",
+          "title": "Rafta Rafta Dekho RAAG.ME",
+          "path": "music/Old is Gold/Rafta_Rafta_Dekho_RAAG.ME.mp3"
+        },
+        {
+          "id": 96,
+          "folder": "Old is Gold",
+          "filename": "Rang_Bharey_Mausam_Sey.mp3",
+          "title": "Rang Bharey Mausam Sey",
+          "path": "music/Old is Gold/Rang_Bharey_Mausam_Sey.mp3"
+        },
+        {
+          "id": 97,
+          "folder": "Old is Gold",
+          "filename": "Roop_Tera_Aisa_Darpan.mp3",
+          "title": "Roop Tera Aisa Darpan",
+          "path": "music/Old is Gold/Roop_Tera_Aisa_Darpan.mp3"
+        },
+        {
+          "id": 98,
+          "folder": "Old is Gold",
+          "filename": "Rote_Hue_Aate_Hai_Sab.mp3",
+          "title": "Rote Hue Aate Hai Sab",
+          "path": "music/Old is Gold/Rote_Hue_Aate_Hai_Sab.mp3"
+        },
+        {
+          "id": 99,
+          "folder": "Old is Gold",
+          "filename": "Ruk_Jaana_Nahin.mp3",
+          "title": "Ruk Jaana Nahin",
+          "path": "music/Old is Gold/Ruk_Jaana_Nahin.mp3"
+        },
+        {
+          "id": 100,
+          "folder": "Old is Gold",
+          "filename": "Ruk_Jaana_O_Jaana.mp3",
+          "title": "Ruk Jaana O Jaana",
+          "path": "music/Old is Gold/Ruk_Jaana_O_Jaana.mp3"
+        },
+        {
+          "id": 101,
+          "folder": "Old is Gold",
+          "filename": "Saagar_Jaisi_Aankhon_Wali.mp3",
+          "title": "Saagar Jaisi Aankhon Wali",
+          "path": "music/Old is Gold/Saagar_Jaisi_Aankhon_Wali.mp3"
+        },
+        {
+          "id": 102,
+          "folder": "Old is Gold",
+          "filename": "Saagar_Kinare.mp3",
+          "title": "Saagar Kinare",
+          "path": "music/Old is Gold/Saagar_Kinare.mp3"
+        },
+        {
+          "id": 103,
+          "folder": "Old is Gold",
+          "filename": "Saala_Main_To_Sahab_Ban_Gaya.mp3",
+          "title": "Saala Main To Sahab Ban Gaya",
+          "path": "music/Old is Gold/Saala_Main_To_Sahab_Ban_Gaya.mp3"
+        },
+        {
+          "id": 104,
+          "folder": "Old is Gold",
+          "filename": "Sama_Hai_Suhana.mp3",
+          "title": "Sama Hai Suhana",
+          "path": "music/Old is Gold/Sama_Hai_Suhana.mp3"
+        },
+        {
+          "id": 105,
+          "folder": "Old is Gold",
+          "filename": "Samne_Ye_Kaun_Aya_From_Jawani_Diwani.mp3",
+          "title": "Samne Ye Kaun Aya From Jawani Diwani",
+          "path": "music/Old is Gold/Samne_Ye_Kaun_Aya_From_Jawani_Diwani.mp3"
+        },
+        {
+          "id": 106,
+          "folder": "Old is Gold",
+          "filename": "Samne_Yeh_Kaun_Aaya.mp3",
+          "title": "Samne Yeh Kaun Aaya",
+          "path": "music/Old is Gold/Samne_Yeh_Kaun_Aaya.mp3"
+        },
+        {
+          "id": 107,
+          "folder": "Old is Gold",
+          "filename": "Tera_Saath_Hai_Kitna_Pyara.mp3",
+          "title": "Tera Saath Hai Kitna Pyara",
+          "path": "music/Old is Gold/Tera_Saath_Hai_Kitna_Pyara.mp3"
+        },
+        {
+          "id": 108,
           "folder": "Old is Gold",
           "filename": "Tere_Chehre_Mein_Woh.mp3",
           "title": "Tere Chehre Mein Woh",
           "path": "music/Old is Gold/Tere_Chehre_Mein_Woh.mp3"
         },
         {
-          "id": 21,
+          "id": 109,
+          "folder": "Old is Gold",
+          "filename": "Tere_Chehre_Mein.mp3",
+          "title": "Tere Chehre Mein",
+          "path": "music/Old is Gold/Tere_Chehre_Mein.mp3"
+        },
+        {
+          "id": 110,
+          "folder": "Old is Gold",
+          "filename": "Tere_Mere_Milan_Ki_Yeh.mp3",
+          "title": "Tere Mere Milan Ki Yeh",
+          "path": "music/Old is Gold/Tere_Mere_Milan_Ki_Yeh.mp3"
+        },
+        {
+          "id": 111,
+          "folder": "Old is Gold",
+          "filename": "Thandi_Hawa_Yeh_Chandni_Suhani.mp3",
+          "title": "Thandi Hawa Yeh Chandni Suhani",
+          "path": "music/Old is Gold/Thandi_Hawa_Yeh_Chandni_Suhani.mp3"
+        },
+        {
+          "id": 112,
+          "folder": "Old is Gold",
+          "filename": "Tum_Bhi_Chalo_Hum_Bhi.mp3",
+          "title": "Tum Bhi Chalo Hum Bhi",
+          "path": "music/Old is Gold/Tum_Bhi_Chalo_Hum_Bhi.mp3"
+        },
+        {
+          "id": 113,
           "folder": "Old is Gold",
           "filename": "Tum_Bin_Jaoon_Kahan.mp3",
           "title": "Tum Bin Jaoon Kahan",
           "path": "music/Old is Gold/Tum_Bin_Jaoon_Kahan.mp3"
         },
         {
-          "id": 22,
+          "id": 114,
+          "folder": "Old is Gold",
+          "filename": "Vaada_Tera_Vaada.mp3",
+          "title": "Vaada Tera Vaada",
+          "path": "music/Old is Gold/Vaada_Tera_Vaada.mp3"
+        },
+        {
+          "id": 115,
+          "folder": "Old is Gold",
+          "filename": "Ye_dil_na_hote_bechara.mp3",
+          "title": "Ye Dil Na Hote Bechara",
+          "path": "music/Old is Gold/Ye_dil_na_hote_bechara.mp3"
+        },
+        {
+          "id": 116,
+          "folder": "Old is Gold",
+          "filename": "Yeh_Jawani_Hai.mp3",
+          "title": "Yeh Jawani Hai",
+          "path": "music/Old is Gold/Yeh_Jawani_Hai.mp3"
+        },
+        {
+          "id": 117,
+          "folder": "Old is Gold",
+          "filename": "Yeh_Jo_Mohabbat_Hai.mp3",
+          "title": "Yeh Jo Mohabbat Hai",
+          "path": "music/Old is Gold/Yeh_Jo_Mohabbat_Hai.mp3"
+        },
+        {
+          "id": 118,
+          "folder": "Old is Gold",
+          "filename": "Yeh_Lal_Rang.mp3",
+          "title": "Yeh Lal Rang",
+          "path": "music/Old is Gold/Yeh_Lal_Rang.mp3"
+        },
+        {
+          "id": 119,
           "folder": "Old is Gold",
           "filename": "Yeh_Shaam_Mastani.mp3",
           "title": "Yeh Shaam Mastani",
           "path": "music/Old is Gold/Yeh_Shaam_Mastani.mp3"
         },
         {
-          "id": 23,
+          "id": 120,
+          "folder": "Old is Gold",
+          "filename": "Yeh_Vaada_Raha.mp3",
+          "title": "Yeh Vaada Raha",
+          "path": "music/Old is Gold/Yeh_Vaada_Raha.mp3"
+        },
+        {
+          "id": 121,
+          "folder": "Old is Gold",
+          "filename": "Zaroorat_Zaroorat_Hai.mp3",
+          "title": "Zaroorat Zaroorat Hai",
+          "path": "music/Old is Gold/Zaroorat_Zaroorat_Hai.mp3"
+        },
+        {
+          "id": 122,
+          "folder": "Old is Gold",
+          "filename": "Zindagi_Aa_Raha_Hoon_Main.mp3",
+          "title": "Zindagi Aa Raha Hoon Main",
+          "path": "music/Old is Gold/Zindagi_Aa_Raha_Hoon_Main.mp3"
+        },
+        {
+          "id": 123,
           "folder": "Old is Gold",
           "filename": "Zindagi_Ka_Safar_Hai_Yeh_Kais.mp3",
           "title": "Zindagi Ka Safar Hai Yeh Kais",
           "path": "music/Old is Gold/Zindagi_Ka_Safar_Hai_Yeh_Kais.mp3"
         },
         {
-          "id": 24,
+          "id": 124,
           "folder": "Old is Gold",
           "filename": "Zindagi_ke_safar_me.mp3",
           "title": "Zindagi Ke Safar Me",
@@ -193,28 +893,28 @@
       "label": "Trikal Sandhya",
       "tracks": [
         {
-          "id": 25,
+          "id": 125,
           "folder": "Trikal Sandhya",
           "filename": "01_Track.mp3",
           "title": "Track 01",
           "path": "music/Trikal Sandhya/01_Track.mp3"
         },
         {
-          "id": 26,
+          "id": 126,
           "folder": "Trikal Sandhya",
           "filename": "02_Track.mp3",
           "title": "Track 02",
           "path": "music/Trikal Sandhya/02_Track.mp3"
         },
         {
-          "id": 27,
+          "id": 127,
           "folder": "Trikal Sandhya",
           "filename": "03_Track.mp3",
           "title": "Track 03",
           "path": "music/Trikal Sandhya/03_Track.mp3"
         },
         {
-          "id": 28,
+          "id": 128,
           "folder": "Trikal Sandhya",
           "filename": "04_Track.mp3",
           "title": "Track 04",
@@ -227,147 +927,147 @@
       "label": "Devotional",
       "tracks": [
         {
-          "id": 29,
+          "id": 129,
           "folder": "devotional",
           "filename": "Abhale Thi Utari Maa - Hema Desai.mp3",
           "title": "Abhale Thi Utari Maa Hema Desai",
           "path": "music/devotional/Abhale Thi Utari Maa - Hema Desai.mp3"
         },
         {
-          "id": 30,
+          "id": 130,
           "folder": "devotional",
           "filename": "Ame Mahiyara re  - Narsnih Mehta.mp3",
           "title": "Ame Mahiyara Re Narsnih Mehta",
           "path": "music/devotional/Ame Mahiyara re  - Narsnih Mehta.mp3"
         },
         {
-          "id": 31,
+          "id": 131,
           "folder": "devotional",
           "filename": "Bajrang Baan.mp3",
           "title": "Bajrang Baan",
           "path": "music/devotional/Bajrang Baan.mp3"
         },
         {
-          "id": 32,
+          "id": 132,
           "folder": "devotional",
           "filename": "Dhuni Re Dhakhavi - LO-FI Version.mp3",
           "title": "Dhuni Re Dhakhavi LO FI Version",
           "path": "music/devotional/Dhuni Re Dhakhavi - LO-FI Version.mp3"
         },
         {
-          "id": 33,
+          "id": 133,
           "folder": "devotional",
           "filename": "Hamuman Vandana.mp3",
           "title": "Hamuman Vandana",
           "path": "music/devotional/Hamuman Vandana.mp3"
         },
         {
-          "id": 34,
+          "id": 134,
           "folder": "devotional",
           "filename": "Hanuman Chalisa.mp3",
           "title": "Hanuman Chalisa",
           "path": "music/devotional/Hanuman Chalisa.mp3"
         },
         {
-          "id": 35,
+          "id": 135,
           "folder": "devotional",
           "filename": "Jay adhya Shakti.mp3",
           "title": "Jay Adhya Shakti",
           "path": "music/devotional/Jay adhya Shakti.mp3"
         },
         {
-          "id": 36,
+          "id": 136,
           "folder": "devotional",
           "filename": "Jevo Gano Tevo Tamaro-Mataji Stuti.mp3",
           "title": "Jevo Gano Tevo Tamaro Mataji Stuti",
           "path": "music/devotional/Jevo Gano Tevo Tamaro-Mataji Stuti.mp3"
         },
         {
-          "id": 37,
+          "id": 137,
           "folder": "devotional",
           "filename": "Kasumbi no rang - Zaverchand Meghani.mp3",
           "title": "Kasumbi No Rang Zaverchand Meghani",
           "path": "music/devotional/Kasumbi no rang - Zaverchand Meghani.mp3"
         },
         {
-          "id": 38,
+          "id": 138,
           "folder": "devotional",
           "filename": "Lunawada Song.mp3",
           "title": "Lunawada Song",
           "path": "music/devotional/Lunawada Song.mp3"
         },
         {
-          "id": 39,
+          "id": 139,
           "folder": "devotional",
           "filename": "Maae Garbo Koravyo - Hema Desai.mp3",
           "title": "Maae Garbo Koravyo Hema Desai",
           "path": "music/devotional/Maae Garbo Koravyo - Hema Desai.mp3"
         },
         {
-          "id": 40,
+          "id": 140,
           "folder": "devotional",
           "filename": "Madi Taru Kanku Kharyu-Asha Bhosle.mp3",
           "title": "Madi Taru Kanku Kharyu Asha Bhosle",
           "path": "music/devotional/Madi Taru Kanku Kharyu-Asha Bhosle.mp3"
         },
         {
-          "id": 41,
+          "id": 141,
           "folder": "devotional",
           "filename": "Mune Ekli Jani Ne Kane Chhedi Re.mp3",
           "title": "Mune Ekli Jani Ne Kane Chhedi Re",
           "path": "music/devotional/Mune Ekli Jani Ne Kane Chhedi Re.mp3"
         },
         {
-          "id": 42,
+          "id": 142,
           "folder": "devotional",
           "filename": "Mune gamto kanudo.mp3",
           "title": "Mune Gamto Kanudo",
           "path": "music/devotional/Mune gamto kanudo.mp3"
         },
         {
-          "id": 43,
+          "id": 143,
           "folder": "devotional",
           "filename": "Pratham Pehla - Ganesh Bhajan.mp3",
           "title": "Pratham Pehla Ganesh Bhajan",
           "path": "music/devotional/Pratham Pehla - Ganesh Bhajan.mp3"
         },
         {
-          "id": 44,
+          "id": 144,
           "folder": "devotional",
           "filename": "Ramraksha Stotram.mp3",
           "title": "Ramraksha Stotram",
           "path": "music/devotional/Ramraksha Stotram.mp3"
         },
         {
-          "id": 45,
+          "id": 145,
           "folder": "devotional",
           "filename": "Tahuko Hemant Chauhan.mp3",
           "title": "Tahuko Hemant Chauhan",
           "path": "music/devotional/Tahuko Hemant Chauhan.mp3"
         },
         {
-          "id": 46,
+          "id": 146,
           "folder": "devotional",
           "filename": "Tara Dukh Ne Khankheri Nakh-original.mp3",
           "title": "Tara Dukh Ne Khankheri Nakh Original",
           "path": "music/devotional/Tara Dukh Ne Khankheri Nakh-original.mp3"
         },
         {
-          "id": 47,
+          "id": 147,
           "folder": "devotional",
           "filename": "Tara Dukh Ne Khankheri Nakh.mp3",
           "title": "Tara Dukh Ne Khankheri Nakh",
           "path": "music/devotional/Tara Dukh Ne Khankheri Nakh.mp3"
         },
         {
-          "id": 48,
+          "id": 148,
           "folder": "devotional",
           "filename": "દુધે તે ભરી તલાવડી  Asha Bhosle.mp3",
           "title": "દુધે તે ભરી તલાવડી Asha Bhosle",
           "path": "music/devotional/દુધે તે ભરી તલાવડી  Asha Bhosle.mp3"
         },
         {
-          "id": 49,
+          "id": 149,
           "folder": "devotional",
           "filename": "મેરુ તો ડગે - Meru To Dage.mp3",
           "title": "મેરુ તો ડગે Meru To Dage",
