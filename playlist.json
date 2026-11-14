@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-17T17:53:06.856Z",
+  "generated": "2026-11-14T06:41:42.076Z",
   "playlists": [
     {
       "folder": "Jivan ni Pagdhare",
@@ -99,32 +99,122 @@
       ]
     },
     {
+      "folder": "Old is Gold",
+      "label": "Old Is Gold",
+      "tracks": [
+        {
+          "id": 13,
+          "folder": "Old is Gold",
+          "filename": "Aane_Wala_Pal.mp3",
+          "title": "Aane Wala Pal",
+          "path": "music/Old is Gold/Aane_Wala_Pal.mp3"
+        },
+        {
+          "id": 14,
+          "folder": "Old is Gold",
+          "filename": "Choo_Kar_Mere_Man_Ko.mp3",
+          "title": "Choo Kar Mere Man Ko",
+          "path": "music/Old is Gold/Choo_Kar_Mere_Man_Ko.mp3"
+        },
+        {
+          "id": 15,
+          "folder": "Old is Gold",
+          "filename": "Dream_Girl.mp3",
+          "title": "Dream Girl",
+          "path": "music/Old is Gold/Dream_Girl.mp3"
+        },
+        {
+          "id": 16,
+          "folder": "Old is Gold",
+          "filename": "Jeevan_Ke_Din_-_Bade_Dil_Wala.mp3",
+          "title": "Jeevan Ke Din Bade Dil Wala",
+          "path": "music/Old is Gold/Jeevan_Ke_Din_-_Bade_Dil_Wala.mp3"
+        },
+        {
+          "id": 17,
+          "folder": "Old is Gold",
+          "filename": "O_Mere_Dil_Ke_Chain.mp3",
+          "title": "O Mere Dil Ke Chain",
+          "path": "music/Old is Gold/O_Mere_Dil_Ke_Chain.mp3"
+        },
+        {
+          "id": 18,
+          "folder": "Old is Gold",
+          "filename": "Phoolon_Ke_Rang_Se.mp3",
+          "title": "Phoolon Ke Rang Se",
+          "path": "music/Old is Gold/Phoolon_Ke_Rang_Se.mp3"
+        },
+        {
+          "id": 19,
+          "folder": "Old is Gold",
+          "filename": "Pyar_Diwana_Hota_Hai.mp3",
+          "title": "Pyar Diwana Hota Hai",
+          "path": "music/Old is Gold/Pyar_Diwana_Hota_Hai.mp3"
+        },
+        {
+          "id": 20,
+          "folder": "Old is Gold",
+          "filename": "Tere_Chehre_Mein_Woh.mp3",
+          "title": "Tere Chehre Mein Woh",
+          "path": "music/Old is Gold/Tere_Chehre_Mein_Woh.mp3"
+        },
+        {
+          "id": 21,
+          "folder": "Old is Gold",
+          "filename": "Tum_Bin_Jaoon_Kahan.mp3",
+          "title": "Tum Bin Jaoon Kahan",
+          "path": "music/Old is Gold/Tum_Bin_Jaoon_Kahan.mp3"
+        },
+        {
+          "id": 22,
+          "folder": "Old is Gold",
+          "filename": "Yeh_Shaam_Mastani.mp3",
+          "title": "Yeh Shaam Mastani",
+          "path": "music/Old is Gold/Yeh_Shaam_Mastani.mp3"
+        },
+        {
+          "id": 23,
+          "folder": "Old is Gold",
+          "filename": "Zindagi_Ka_Safar_Hai_Yeh_Kais.mp3",
+          "title": "Zindagi Ka Safar Hai Yeh Kais",
+          "path": "music/Old is Gold/Zindagi_Ka_Safar_Hai_Yeh_Kais.mp3"
+        },
+        {
+          "id": 24,
+          "folder": "Old is Gold",
+          "filename": "Zindagi_ke_safar_me.mp3",
+          "title": "Zindagi Ke Safar Me",
+          "path": "music/Old is Gold/Zindagi_ke_safar_me.mp3"
+        }
+      ]
+    },
+    {
       "folder": "Trikal Sandhya",
       "label": "Trikal Sandhya",
       "tracks": [
         {
-          "id": 13,
+          "id": 25,
           "folder": "Trikal Sandhya",
           "filename": "01_Track.mp3",
           "title": "Track 01",
           "path": "music/Trikal Sandhya/01_Track.mp3"
         },
         {
-          "id": 14,
+          "id": 26,
           "folder": "Trikal Sandhya",
           "filename": "02_Track.mp3",
           "title": "Track 02",
           "path": "music/Trikal Sandhya/02_Track.mp3"
         },
         {
-          "id": 15,
+          "id": 27,
           "folder": "Trikal Sandhya",
           "filename": "03_Track.mp3",
           "title": "Track 03",
           "path": "music/Trikal Sandhya/03_Track.mp3"
         },
         {
-          "id": 16,
+          "id": 28,
           "folder": "Trikal Sandhya",
           "filename": "04_Track.mp3",
           "title": "Track 04",
@@ -137,147 +227,147 @@
       "label": "Devotional",
       "tracks": [
         {
-          "id": 17,
+          "id": 29,
           "folder": "devotional",
           "filename": "Abhale Thi Utari Maa - Hema Desai.mp3",
           "title": "Abhale Thi Utari Maa Hema Desai",
           "path": "music/devotional/Abhale Thi Utari Maa - Hema Desai.mp3"
         },
         {
-          "id": 18,
+          "id": 30,
           "folder": "devotional",
           "filename": "Ame Mahiyara re  - Narsnih Mehta.mp3",
           "title": "Ame Mahiyara Re Narsnih Mehta",
           "path": "music/devotional/Ame Mahiyara re  - Narsnih Mehta.mp3"
         },
         {
-          "id": 19,
+          "id": 31,
           "folder": "devotional",
           "filename": "Bajrang Baan.mp3",
           "title": "Bajrang Baan",
           "path": "music/devotional/Bajrang Baan.mp3"
         },
         {
-          "id": 20,
+          "id": 32,
           "folder": "devotional",
           "filename": "Dhuni Re Dhakhavi - LO-FI Version.mp3",
           "title": "Dhuni Re Dhakhavi LO FI Version",
           "path": "music/devotional/Dhuni Re Dhakhavi - LO-FI Version.mp3"
         },
         {
-          "id": 21,
+          "id": 33,
           "folder": "devotional",
           "filename": "Hamuman Vandana.mp3",
           "title": "Hamuman Vandana",
           "path": "music/devotional/Hamuman Vandana.mp3"
         },
         {
-          "id": 22,
+          "id": 34,
           "folder": "devotional",
           "filename": "Hanuman Chalisa.mp3",
           "title": "Hanuman Chalisa",
           "path": "music/devotional/Hanuman Chalisa.mp3"
         },
         {
-          "id": 23,
+          "id": 35,
           "folder": "devotional",
           "filename": "Jay adhya Shakti.mp3",
           "title": "Jay Adhya Shakti",
           "path": "music/devotional/Jay adhya Shakti.mp3"
         },
         {
-          "id": 24,
+          "id": 36,
           "folder": "devotional",
           "filename": "Jevo Gano Tevo Tamaro-Mataji Stuti.mp3",
           "title": "Jevo Gano Tevo Tamaro Mataji Stuti",
           "path": "music/devotional/Jevo Gano Tevo Tamaro-Mataji Stuti.mp3"
         },
         {
-          "id": 25,
+          "id": 37,
           "folder": "devotional",
           "filename": "Kasumbi no rang - Zaverchand Meghani.mp3",
           "title": "Kasumbi No Rang Zaverchand Meghani",
           "path": "music/devotional/Kasumbi no rang - Zaverchand Meghani.mp3"
         },
         {
-          "id": 26,
+          "id": 38,
           "folder": "devotional",
           "filename": "Lunawada Song.mp3",
           "title": "Lunawada Song",
           "path": "music/devotional/Lunawada Song.mp3"
         },
         {
-          "id": 27,
+          "id": 39,
           "folder": "devotional",
           "filename": "Maae Garbo Koravyo - Hema Desai.mp3",
           "title": "Maae Garbo Koravyo Hema Desai",
           "path": "music/devotional/Maae Garbo Koravyo - Hema Desai.mp3"
         },
         {
-          "id": 28,
+          "id": 40,
           "folder": "devotional",
           "filename": "Madi Taru Kanku Kharyu-Asha Bhosle.mp3",
           "title": "Madi Taru Kanku Kharyu Asha Bhosle",
           "path": "music/devotional/Madi Taru Kanku Kharyu-Asha Bhosle.mp3"
         },
         {
-          "id": 29,
+          "id": 41,
           "folder": "devotional",
           "filename": "Mune Ekli Jani Ne Kane Chhedi Re.mp3",
           "title": "Mune Ekli Jani Ne Kane Chhedi Re",
           "path": "music/devotional/Mune Ekli Jani Ne Kane Chhedi Re.mp3"
         },
         {
-          "id": 30,
+          "id": 42,
           "folder": "devotional",
           "filename": "Mune gamto kanudo.mp3",
           "title": "Mune Gamto Kanudo",
           "path": "music/devotional/Mune gamto kanudo.mp3"
         },
         {
-          "id": 31,
+          "id": 43,
           "folder": "devotional",
           "filename": "Pratham Pehla - Ganesh Bhajan.mp3",
           "title": "Pratham Pehla Ganesh Bhajan",
           "path": "music/devotional/Pratham Pehla - Ganesh Bhajan.mp3"
         },
         {
-          "id": 32,
+          "id": 44,
           "folder": "devotional",
           "filename": "Ramraksha Stotram.mp3",
           "title": "Ramraksha Stotram",
           "path": "music/devotional/Ramraksha Stotram.mp3"
         },
         {
-          "id": 33,
+          "id": 45,
           "folder": "devotional",
           "filename": "Tahuko Hemant Chauhan.mp3",
           "title": "Tahuko Hemant Chauhan",
           "path": "music/devotional/Tahuko Hemant Chauhan.mp3"
         },
         {
-          "id": 34,
+          "id": 46,
           "folder": "devotional",
           "filename": "Tara Dukh Ne Khankheri Nakh-original.mp3",
           "title": "Tara Dukh Ne Khankheri Nakh Original",
           "path": "music/devotional/Tara Dukh Ne Khankheri Nakh-original.mp3"
         },
         {
-          "id": 35,
+          "id": 47,
           "folder": "devotional",
           "filename": "Tara Dukh Ne Khankheri Nakh.mp3",
           "title": "Tara Dukh Ne Khankheri Nakh",
           "path": "music/devotional/Tara Dukh Ne Khankheri Nakh.mp3"
         },
         {
-          "id": 36,
+          "id": 48,
           "folder": "devotional",
           "filename": "દુધે તે ભરી તલાવડી  Asha Bhosle.mp3",
           "title": "દુધે તે ભરી તલાવડી Asha Bhosle",
           "path": "music/devotional/દુધે તે ભરી તલાવડી  Asha Bhosle.mp3"
         },
         {
-          "id": 37,
+          "id": 49,
           "folder": "devotional",
           "filename": "મેરુ તો ડગે - Meru To Dage.mp3",
           "title": "મેરુ તો ડગે Meru To Dage",
